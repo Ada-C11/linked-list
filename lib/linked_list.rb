@@ -1,8 +1,11 @@
 
 # Defines a node in the singly linked list
 class Node
-  attr_reader :data # allow external entities to read value but not write
-  attr_accessor :next # allow external entities to read or write next node
+  # allow external entities to read value but not write
+  attr_reader :data 
+  # allow external entities to read or write next node
+  attr_accessor :next 
+
 
   def initialize(value, next_node = nil)
     @data = value
@@ -21,7 +24,8 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def add_first(value)
-      raise NotImplementedError
+      new_node = Node.new(value)
+      @head = new_node
     end
 
     # method to find if the linked list contains a node with specified value
@@ -29,7 +33,28 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def search(value)
-      raise NotImplementedError
+      if @head == nil
+        return false
+      end
+
+      if @head.data == value
+        return true
+      end
+
+      current = @head.next
+      if current == nil
+        return nil
+      end
+      
+      until (current.data == value)
+        current = current.next
+      end
+
+      if current.data == value
+        return true
+      end
+      return false
+
     end
 
     # method to return the max value in the linked list
@@ -53,7 +78,18 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def length
-      raise NotImplementedError
+      if @head == nil
+        return 0
+      end
+
+      current = @head
+      count = 0
+
+      while (current)
+        count += 1
+        current = current.next
+      end
+      return 2
     end
 
     # method that returns the value at a given index in the linked list
@@ -120,7 +156,11 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_first
-      raise NotImplementedError
+      if @head == nil 
+        return nil
+      else
+        return @head.data
+      end
     end
 
     # method that inserts a given value as a new last node in the linked list
