@@ -1,3 +1,4 @@
+require "pry"
 
 # Defines a node in the singly linked list
 class Node
@@ -21,7 +22,8 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def add_first(value)
-      raise NotImplementedError
+      new_node = Node.new(value, @head)
+      @head = new_node
     end
 
     # method to find if the linked list contains a node with specified value
@@ -29,7 +31,12 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def search(value)
-      raise NotImplementedError
+      cursor = @head
+      while cursor
+        return true if cursor.data == value
+        cursor = cursor.next
+      end
+      return false
     end
 
     # method to return the max value in the linked list
@@ -37,7 +44,16 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_max
-      raise NotImplementedError
+      return nil if !@head
+      cursor = @head
+      max = cursor.data
+      while cursor
+        if cursor.data > max
+          max = cursor.data
+        end
+        cursor = cursor.next
+      end
+      return max
     end
 
     # method to return the min value in the linked list
@@ -45,7 +61,16 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_min
-      raise NotImplementedError
+      return nil if !@head
+      cursor = @head
+      min = cursor.data
+      while cursor
+        if cursor.data < min
+          min = cursor.data
+        end
+        cursor = cursor.next
+      end
+      return min
     end
 
 
@@ -53,7 +78,17 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def length
-      raise NotImplementedError
+      length = 0
+      if !@head
+        return length
+      else
+        current = @head
+        while current
+          length += 1
+          current = current.next
+        end
+      end
+      return length
     end
 
     # method that returns the value at a given index in the linked list
@@ -62,21 +97,39 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_at_index(index)
-      raise NotImplementedError
+      return nil unless @head
+      current = @head
+      index.times do
+        return nil unless current.next
+        current = current.next
+      end
+      return current.data
     end
 
     # method to print all the values in the linked list
     # Time Complexity:  
     # Space Complexity
     def visit
-      raise NotImplementedError
+      cursor = @head
+      while cursor
+        puts cursor.data
+      end
     end
 
     # method to delete the first node found with specified value
     # Time Complexity:  
     # Space Complexity
     def delete(value)
-      raise NotImplementedError
+      return nil if !@head
+      if @head.data == value
+        @head = @head.next 
+        return nil
+      end 
+      cursor = @head
+      while cursor.next && cursor.next.data != value
+        cursor = cursor.next
+      end
+        cursor.next = cursor.next.next if cursor.next
     end
 
     # method to reverse the singly linked list
@@ -120,14 +173,23 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_first
-      raise NotImplementedError
+      return @head ? @head.data : nil
     end
 
     # method that inserts a given value as a new last node in the linked list
     # Time Complexity:  
     # Space Complexity
     def add_last(value)
-      raise NotImplementedError
+      new_node = Node.new(value)
+      if !@head
+        @head = new_node
+      else
+        current = @head
+        while current.next
+          current = current.next
+        end
+        current.next = new_node
+      end
     end
 
     # method that returns the value of the last node in the linked list
@@ -135,7 +197,12 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_last
-      raise NotImplementedError
+      return nil unless @head
+      current = @head
+      while current.next
+        current = current.next
+      end
+    return current.data
     end
 
     # method to insert a new node with specific data value, assuming the linked
