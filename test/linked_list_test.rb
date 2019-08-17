@@ -51,7 +51,7 @@ describe LinkedList do
         end
     end
 
-    xdescribe "length" do
+    describe "length" do
         it "will return 0 for an empty list" do
             # Act-Assert
             expect(@list.length).must_equal 0

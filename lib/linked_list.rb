@@ -52,10 +52,22 @@ class LinkedList
 
 
     # method that returns the length of the singly linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) linear, where n is the number of items in the list
+    # Space Complexity: O(1) constant
     def length
-      raise NotImplementedError
+      if @head == nil
+        return 0
+      end
+
+      count = 1
+      current = @head
+      until current.next == nil
+        current = current.next
+        count += 1
+      end
+
+      return count
+
     end
 
     # method that returns the value at a given index in the linked list
