@@ -76,7 +76,27 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_at_index(index)
-      raise NotImplementedError
+      # if !@head
+      #   return nil
+      # end
+
+      # ^^^^^^^ NOTE FOR CHRIS ^^^^^^^^
+      # THIS CODE WOULD WORK FOR THE EXISTING TEST. I WROTE ANOTHER TEST TO 
+      # ENSURE CODE IS NEEDED TO CATCH AN OUT OF BOUNDS INDEX WHEN THE LIST
+      # IS NOT EMPTY. SEE MY TEST FILE.
+      
+      current = @head
+      count = 0
+      until count == index
+        if !current || !current.next
+          return nil
+        end
+        current = current.next
+        count += 1
+      end
+
+      return current.data
+
     end
 
     # method to print all the values in the linked list
