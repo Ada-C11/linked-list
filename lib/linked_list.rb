@@ -134,7 +134,7 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_first
-      if @head == nil
+      if !@head 
         return nil
       else
         return @head.data
@@ -145,7 +145,19 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def add_last(value)
-      raise NotImplementedError
+      if !@head 
+        add_first(value)
+        return
+      end
+
+      current = @head
+      until !current.next 
+        current = current.next
+      end
+
+      temp = Node.new(value)
+      current.next = temp
+
     end
 
     # method that returns the value of the last node in the linked list
@@ -153,7 +165,17 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_last
-      raise NotImplementedError
+      if !@head 
+        return nil
+      end
+      
+      current = @head
+      until !current.next 
+        current = current.next
+      end
+
+      return current.data
+      
     end
 
     # method to insert a new node with specific data value, assuming the linked
