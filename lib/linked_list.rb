@@ -18,19 +18,18 @@ class LinkedList
 
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(1) constant 
+    # Space Complexity: O(1) constant
     def add_first(value)
       # make a new node temp
-      temp = Node.new(value, nil) 
-      temp.next = @head      
+      temp = Node.new(value, @head) # passing @head sets temp.next = @head      
       @head = temp # set head pointer to new node temp
     end
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
     # Time Complexity:  
-    # Space Complexity
+    # Space Complexity:
     def search(value)
       raise NotImplementedError
     end
