@@ -73,8 +73,8 @@ class LinkedList
     # method that returns the value at a given index in the linked list
     # index count starts at 0
     # returns nil if there are fewer nodes in the linked list than the index value
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) linear, where n is the number of items in the list
+    # Space Complexity:  O(1) constant
     def get_at_index(index)
       # if !@head
       #   return nil
