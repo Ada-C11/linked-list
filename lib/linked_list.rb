@@ -22,14 +22,9 @@ class LinkedList
     # Space Complexity
     def add_first(value)
       # make a new node temp
-      temp = Node.new(value, @head) # temp.next = head
-      # if @head = nil, set head pointer to temp 
-      if @head == nil
-        temp.next = nil
-      else
-        @head = temp # set head pointer to new node temp
-      end
-
+      temp = Node.new(value, nil) 
+      temp.next = @head      
+      @head = temp # set head pointer to new node temp
     end
 
     # method to find if the linked list contains a node with specified value
@@ -130,6 +125,8 @@ class LinkedList
     def get_first
       if @head == nil
         return nil
+      else
+        return @head.data
       end
     end
 
