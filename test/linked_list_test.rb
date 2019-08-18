@@ -137,7 +137,7 @@ describe LinkedList do
         end
     end
 
-    xdescribe 'max and min values' do
+    describe 'max and min values' do
         it 'returns nil if the list is empty' do
             # Act-Assert
             expect(@list.find_max()).must_be_nil

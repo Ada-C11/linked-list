@@ -36,18 +36,43 @@ class LinkedList
 
     # method to return the max value in the linked list
     # returns the data value and not the node
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) linear, where n is the length of the list
+    # Space Complexity:  O(1) constant
     def find_max
-      raise NotImplementedError
+      return nil if !@head
+
+      max = nil
+      current = @head
+
+      max = current.data if max == nil # set max to current before the first loop
+
+      until current == nil
+        max = current.data if current.data > max
+        current = current.next
+      end
+
+      return max
+
     end
 
     # method to return the min value in the linked list
     # returns the data value and not the node
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) linear, where n is the length of the list
+    # Space Complexity:  O(1) constant
     def find_min
-      raise NotImplementedError
+      return nil if !@head
+
+      min = nil
+      current = @head
+
+      min = current.data if min == nil # set min to current before the first loop
+
+      until current == nil
+        min = current.data if current.data < min
+        current = current.next
+      end
+
+      return min
     end
 
 
@@ -55,9 +80,7 @@ class LinkedList
     # Time Complexity:  O(n) linear, where n is the number of items in the list
     # Space Complexity: O(1) constant
     def length
-      if @head == nil
-        return 0
-      end
+      return 0 if @head == nil
 
       count = 1
       current = @head
@@ -76,9 +99,7 @@ class LinkedList
     # Time Complexity:  O(n) linear, where n is the number of items in the list
     # Space Complexity:  O(1) constant
     def get_at_index(index)
-      # if !@head
-      #   return nil
-      # end
+      # return nil if !@head
 
       # ^^^^^^^ NOTE FOR CHRIS ^^^^^^^^
       # THIS CODE WOULD WORK FOR THE EXISTING TEST. I WROTE ANOTHER TEST TO 
@@ -154,11 +175,8 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_first
-      if !@head 
-        return nil
-      else
-        return @head.data
-      end
+      return nil if !@head
+      return @head.data
     end
 
     # method that inserts a given value as a new last node in the linked list
@@ -171,10 +189,8 @@ class LinkedList
       end
 
       current = @head
-      until !current.next 
-        current = current.next
-      end
-
+      current = current.next until !current.next 
+  
       temp = Node.new(value)
       current.next = temp
 
@@ -185,14 +201,10 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_last
-      if !@head 
-        return nil
-      end
+      return nil if !@head
       
       current = @head
-      until !current.next 
-        current = current.next
-      end
+      current = current.next until !current.next 
 
       return current.data
       
@@ -214,10 +226,7 @@ class LinkedList
 
       # navigate to last node
       current = @head
-      while current.next != nil
-          current = current.next
-      end
-
+      current = current.next while current.next != nil
       current.next = @head # make the last node link to first node
     end
 end
