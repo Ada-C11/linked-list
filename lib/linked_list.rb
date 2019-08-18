@@ -125,7 +125,26 @@ class LinkedList
   # Time Complexity:
   # Space Complexity
   def delete(value)
-    raise NotImplementedError
+    return if !@head
+
+    if @head.data == value
+      @head = @head.next
+      return
+    end
+
+    previous = @head
+    current = @head.next
+
+    until value == current.data || !current
+      previous = current
+      current = current.next
+
+      puts "*********** IS THIS NIL??  #{current.data}  #{value}"
+      puts "#{current.data == value}"
+    end
+
+    previous.next = current.next
+    # raise NotImplementedError
   end
 
   # method to reverse the singly linked list
