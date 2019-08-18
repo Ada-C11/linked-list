@@ -182,10 +182,18 @@ class LinkedList
 
   ## Advanced Exercises
   # returns the value at the middle element in the singly linked list
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n)
+  # Space Complexity: O(1)
   def find_middle_value
-    raise NotImplementedError
+    slow = @head
+    fast = @head
+    while fast != nil && fast.next != nil
+      slow = slow.next
+      fast = fast.next.next
+      if fast.next == nil
+        return slow.data
+      end
+    end
   end
 
   # find the nth node from the end and return its value
