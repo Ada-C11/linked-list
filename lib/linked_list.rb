@@ -128,10 +128,27 @@ class LinkedList
     end
 
     # method to delete the first node found with specified value
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) linear, where the maximum value of n is the length of the list
+    # Space Complexity:  O(1) constant
     def delete(value)
-      raise NotImplementedError
+      # find the node with the given value
+      
+      # if list is empty
+      return if !@head
+
+      # if value is at beginning of list 
+      if @head.data == value
+        @head = @head.next
+        return
+      end
+      
+      # if value is not at beginning of list
+      current = @head
+      until current.next.data == value
+        current = current.next
+      end
+
+      current.next = current.next.next
     end
 
     # method to reverse the singly linked list

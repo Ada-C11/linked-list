@@ -162,7 +162,7 @@ describe LinkedList do
         end
     end
 
-    xdescribe "delete" do
+    describe "delete" do
         it "delete from empty linked list is a no-op" do
             # Assert
             expect(@list.length).must_equal 0
