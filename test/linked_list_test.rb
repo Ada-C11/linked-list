@@ -45,7 +45,7 @@ describe LinkedList do
             expect(@list.get_first).must_equal 3
         end
 
-        it 'will return `nil` for `getFirst` if the list is empty' do
+        it 'will return `nil` for `get_first` if the list is empty' do
             # Act-Assert
             expect(@list.get_first).must_be_nil
         end
@@ -69,7 +69,7 @@ describe LinkedList do
         end
     end
 
-    describe "addLast & getLast" do
+    describe "add_last & get_last" do
         it "will add to the front if the list is empty" do
             # Arrange
             @list.add_last(1)
@@ -96,13 +96,31 @@ describe LinkedList do
             expect(@list.get_last).must_equal 4
             expect(@list.length).must_equal 3
         end
+
+        it "will return `nil` for `get_last` if the list is empty" do
+            # Act-Assert
+            expect(@list.get_last).must_be_nil
+        end
     end
 
     describe 'get_at_index' do
-        it 'returns nil if the index is outside the bounds of the list' do
-            # Act-Assert
+        it 'returns nil if the list is empty' do
+            #Act-Assert
             expect(@list.get_at_index(3)).must_be_nil
         end
+
+        it 'returns nil if the index is outside the bounds of the list' do
+            # Arrange
+            @list.add_first(1)
+            @list.add_first(2)
+            #Act-Assert
+            expect(@list.get_at_index(3)).must_be_nil
+        end
+
+      # ^^^^^^^ NOTE FOR CHRIS ^^^^^^^^
+      # I WROTE ANOTHER TEST TO ENSURE CODE IS WRITTEN TO CATCH 
+      # AN OUT OF BOUNDS INDEX WHEN THE LIST IS NOT EMPTY.
+      # I ALSO RENAMED THE ORIGINAL TEST.
 
         it 'can retrieve an item at an index in the list' do
             # Arrange
@@ -199,7 +217,7 @@ describe LinkedList do
             expect(@list.find_nth_from_end(3)).must_be_nil
         end
 
-        it 'can retrieve an item at index n from the end in the list' do
+        it 'can retrieve an item at index n from the end of the list' do
             # Arrange
             @list.add_first(1)
             @list.add_first(2)
@@ -216,7 +234,7 @@ describe LinkedList do
     end
 
     describe "reverse" do
-        it 'can retrieve an item at index n from the end in the list' do
+        it 'can retrieve an item in a reversed list at index n from the end of the list' do
             # Arrange
             @list.add_first(4)
             @list.add_first(3)
