@@ -168,7 +168,6 @@ class LinkedList
       current = current.next
     end
 
-    puts "********** #{current}"
     current.next = new_node
   end
 
