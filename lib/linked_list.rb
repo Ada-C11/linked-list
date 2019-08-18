@@ -42,7 +42,17 @@ class LinkedList
   # Time Complexity:
   # Space Complexity
   def find_max
-    raise NotImplementedError
+    return nil if !@head
+
+    current = @head.next
+    max = @head.data
+
+    until !current
+      max = current.data if current.data > max
+      current = current.next
+    end
+
+    return max
   end
 
   # method to return the min value in the linked list
@@ -50,7 +60,17 @@ class LinkedList
   # Time Complexity:
   # Space Complexity
   def find_min
-    raise NotImplementedError
+    return nil if !@head
+
+    current = @head.next
+    min = @head.data
+
+    until !current
+      min = current.data if current.data < min
+      current = current.next
+    end
+
+    return min
   end
 
   # method that returns the length of the singly linked list
