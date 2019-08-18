@@ -77,7 +77,7 @@ class LinkedList
   # Space Complexity
   def get_at_index(index)
     return nil if !@head
-    return @head.value if index == 0
+    return @head.data if index == 0
 
     current = @head.next
     count = 1
@@ -90,7 +90,7 @@ class LinkedList
     if index > count
       return nil
     else
-      return current.value
+      return current.data
     end
   end
 
