@@ -217,7 +217,7 @@ describe LinkedList do
             expect(@list.find_nth_from_end(3)).must_be_nil
         end
 
-        it 'can retrieve an item at index n from the end in the list' do
+        it 'can retrieve an item at index n from the end of the list' do
             # Arrange
             @list.add_first(1)
             @list.add_first(2)
@@ -234,7 +234,7 @@ describe LinkedList do
     end
 
     describe "reverse" do
-        it 'can retrieve an item at index n from the end in the list' do
+        it 'can retrieve an item in a reversed list at index n from the end of the list' do
             # Arrange
             @list.add_first(4)
             @list.add_first(3)
