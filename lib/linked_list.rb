@@ -76,9 +76,8 @@ class LinkedList
   # Time Complexity:
   # Space Complexity
   def get_at_index(index)
-    # raise NotImplementedError
-
     return nil if !@head
+    return @head.value if index == 0
 
     current = @head.next
     count = 1
