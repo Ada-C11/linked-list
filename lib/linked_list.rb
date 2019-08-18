@@ -200,16 +200,16 @@ class LinkedList
     # Additional Exercises 
     # returns the value in the first node
     # returns nil if the list is empty
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(1)
+    # Space Complexity:  O(1)
     def get_first
       return nil if !@head
       return @head.data
     end
 
     # method that inserts a given value as a new last node in the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the length of the list
+    # Space Complexity:  O(1)
     def add_last(value)
       if !@head 
         add_first(value)
@@ -226,8 +226,8 @@ class LinkedList
 
     # method that returns the value of the last node in the linked list
     # returns nil if the linked list is empty
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the length of the list
+    # Space Complexity:  O(1)
     def get_last
       return nil if !@head
       
