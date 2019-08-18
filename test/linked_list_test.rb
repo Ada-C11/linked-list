@@ -211,7 +211,7 @@ describe LinkedList do
         end
     end
 
-    xdescribe "nth_from_the_end" do
+    describe "nth_from_the_end" do
         it 'returns nil if n is outside the bounds of the list' do
             # Act-Assert
             expect(@list.find_nth_from_end(3)).must_be_nil
