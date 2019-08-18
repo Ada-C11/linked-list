@@ -82,7 +82,7 @@ class LinkedList
     current = @head.next
     count = 1
 
-    until !current || count > index
+    until !current || count == index
       current = current.next
       count += 1
     end
