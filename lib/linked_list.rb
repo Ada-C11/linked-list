@@ -76,7 +76,23 @@ class LinkedList
   # Time Complexity:
   # Space Complexity
   def get_at_index(index)
-    raise NotImplementedError
+    # raise NotImplementedError
+
+    return nil if !@head
+
+    current = @head.next
+    count = 1
+
+    until !current || count > index
+      current = current.next
+      count += 1
+    end
+
+    if index > count
+      return nil
+    else
+      return current.value
+    end
   end
 
   # method to print all the values in the linked list
