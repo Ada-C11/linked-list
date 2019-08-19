@@ -33,28 +33,36 @@ class LinkedList
     # Time Complexity:
     # Space Complexity
     def search(value)
-      if @head == nil
-        return false
-      end
+      # if @head == nil
+      #   return false
+      # end
 
-      if @head.data == value
-        return true
-      end
+      # if @head.data == value
+      #   return true
+      # end
 
-      current = @head.next
-      if current == nil
-        return nil
-      end
+      # current = @head.next
+      # if current == nil
+      #   return nil
+      # end
 
-      until (current.data == value)
+      # until (current.data == value)
+      #   current = current.next
+      # end
+
+      # if current.data == value
+      #   return true
+      # end
+      # return false
+
+      current = @head
+      while (current != nil)
+        if current.data == value
+          return true
+        end
         current = current.next
       end
-
-      if current.data == value
-        return true
-      end
       return false
-
     end
 
     # method to return the max value in the linked list
@@ -62,25 +70,19 @@ class LinkedList
     # Time Complexity:
     # Space Complexity
     def find_max
-      max = 0
-      current = nil
-
       if @head == nil
-        return nil
+        return @head
       end
+      
+      max = @head.data
+      current = @head
 
-      if @head.data > max
-        max = @head.data
-      else
-        current = @head.next
-      end
-
-      if current.data > max
-        max = current.data
-      else
+      while (current != nil)
+        if current.data > max
+          max = current.data
+        end
         current = current.next
       end
-
       return max
     end
 
@@ -89,25 +91,19 @@ class LinkedList
     # Time Complexity:
     # Space Complexity
     def find_min
-      min = 10000000 #10 million
-      current = nil
-
       if @head == nil
-        return nil
+        return @head
       end
 
-      if @head.data < min
-        min = @head.data
-      else
-        current = @head.next
-      end
+      min = @head.data
+      current = @head
 
-      if current.data < min
-        min = current.data
-      else
+      while (current != nil)
+        if current.data < min
+          min = current.data
+        end
         current = current.next
       end
-
       return min
     end
 
@@ -123,11 +119,11 @@ class LinkedList
       current = @head
       count = 0
 
-      while (current)
+      while (current != nil)
         count += 1
         current = current.next
       end
-      return 2
+      return length
     end
 
     # method that returns the value at a given index in the linked list
@@ -136,22 +132,16 @@ class LinkedList
     # Time Complexity:  # Space Complexity
     def get_at_index(index)
       count = 0
-      current = @head.next
-      
-      if @head == nil
-        return nil
-      end
-      if current == nil
-        return nil
-      end
-
-      while(current) #current is not nil
-        if (count == index)
+      current = @head
+    
+      while (current != nil)
+        if count == index
           return current.data
         end
         count += 1
         current = current.next
       end
+      return nil
     end
 
     # method to print all the values in the linked list
