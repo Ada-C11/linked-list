@@ -21,7 +21,7 @@ describe LinkedList do
         end
     end
 
-    describe 'add_first & get_first' do
+    xdescribe 'add_first & get_first' do
         it 'can add values to an empty list' do
             # Act
             @list.add_first(3)
@@ -69,7 +69,7 @@ describe LinkedList do
         end
     end
 
-    describe "addLast & getLast" do
+    xdescribe "addLast & getLast" do
         it "will add to the front if the list is empty" do
             # Arrange
             @list.add_last(1)
@@ -119,7 +119,7 @@ describe LinkedList do
         end
     end
 
-    describe 'max and min values' do
+    xdescribe 'max and min values' do
         it 'returns nil if the list is empty' do
             # Act-Assert
             expect(@list.find_max()).must_be_nil
@@ -156,12 +156,14 @@ describe LinkedList do
 
         it "can delete valid values from list" do
             # Arrange
+        
             @list.add_last(9)
             @list.add_last(10)
             @list.add_first(4)
             @list.add_first(3)
             @list.add_first(2)
             
+    
             # Act
             # delete fist node (requires updating head)
             @list.delete(2)
@@ -193,7 +195,7 @@ describe LinkedList do
         end
     end
 
-    describe "nth_from_the_end" do
+    xdescribe "nth_from_the_end" do
         it 'returns nil if n is outside the bounds of the list' do
             # Act-Assert
             expect(@list.find_nth_from_end(3)).must_be_nil
