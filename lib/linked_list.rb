@@ -24,8 +24,11 @@ class LinkedList
     # Time Complexity:
     # Space Complexity
     def add_first(value)
-      new_node = Node.new(value)
+      temp_node = @head
+      new_node = Node.new(value, temp_node)
       @head = new_node
+
+      return @head.data
     end
 
     # method to find if the linked list contains a node with specified value
@@ -73,11 +76,10 @@ class LinkedList
       if @head == nil
         return @head
       end
-      
-      max = @head.data
+  
       current = @head
-
-      while (current != nil)
+      max = current.data
+      while current != nil
         if current.data > max
           max = current.data
         end
@@ -94,11 +96,10 @@ class LinkedList
       if @head == nil
         return @head
       end
-
-      min = @head.data
+  
       current = @head
-
-      while (current != nil)
+      min = current.data
+      while current != nil
         if current.data < min
           min = current.data
         end
@@ -112,18 +113,17 @@ class LinkedList
     # Time Complexity:
     # Space Complexity
     def length
-      if @head == nil
-        return 0
-      end
-
-      current = @head
       count = 0
-
-      while (current != nil)
+      if @head == nil
+        return count
+      end
+  
+      current = @head
+      while current != nil
         count += 1
         current = current.next
       end
-      return length
+      return count
     end
 
     # method that returns the value at a given index in the linked list
@@ -133,13 +133,12 @@ class LinkedList
     def get_at_index(index)
       count = 0
       current = @head
-    
-      while (current != nil)
+      while current != nil
         if count == index
           return current.data
         end
-        count += 1
         current = current.next
+        count += 1
       end
       return nil
     end
@@ -210,7 +209,20 @@ class LinkedList
     # Time Complexity:
     # Space Complexity
     def add_last(value)
-      raise NotImplementedError
+      new_node = Node.new(value)
+      if @head == nil
+        @head = new_node
+        return @head.data
+      end
+
+      current = @head
+      while (current != nil)
+        if current.next == nil
+          current.next = new_node
+          return current.next
+        end
+        current = current.next
+      end
     end
 
     # method that returns the value of the last node in the linked list
