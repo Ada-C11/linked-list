@@ -142,45 +142,28 @@ class LinkedList
 
   # method to reverse the singly linked list
   # note: the nodes should be moved and not just the values in the nodes
-  # Time Complexity: O(n^2), where n is the number of nodes in the list
+  # Time Complexity: O(n), where n is the number of nodes in the list
   # Space Complexity: O(1)
   def reverse
-    # find length - O(n)
-    length = self.length
-    return if length == 0
-    (length - 1).times do |i|
-      head_node = @head
-      last_node = @head
-      prev_node = @head
-      until last_node.next == nil
-        prev_node = last_node
-        last_node = last_node.next
-      end
-      if i == 0
-        temp_node = @head
-        @head = last_node
-        @head.next = temp_node
-        prev_node.next = nil
-      else
-        temp_node = @head
-        (i - 1).times do
-          temp_node = temp_node.next
-        end
+    current = @head
+    prev = nil
 
-        last_node.next = temp_node.next
-        temp_node.next = last_node
-        prev_node.next = nil
-      end
+    while current
+      temp = current.next
+      current.next = prev
+      prev = current
+      current = temp
     end
+    @head = prev
     return
   end
 
   ## Advanced Exercises
   # returns the value at the middle element in the singly linked list
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n), where n is the number of nodes in the list
+  # Space Complexity: O(1)
   def find_middle_value
-    raise NotImplementedError
+    return self.get_at_index(self.length / 2)
   end
 
   # find the nth node from the end and return its value
@@ -208,10 +191,20 @@ class LinkedList
   # checks if the linked list has a cycle. A cycle exists if any node in the
   # linked list links to a node already visited.
   # returns true if a cycle is found, false otherwise.
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n), where n is the number of nodes in the list
+  # Space Complexity: O(n), where n is the number of nodes in the list
   def has_cycle
-    raise NotImplementedError
+    current = @head
+    node_hash = {}
+
+    while current
+      if node_hash[current]
+        return true
+      end
+      node_hash[current] = true
+      current = current.next
+    end
+    return false
   end
 
   # Additional Exercises

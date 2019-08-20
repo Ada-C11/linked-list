@@ -232,4 +232,49 @@ describe LinkedList do
       expect(@list.find_nth_from_end(3)).must_equal 4
     end
   end
+
+  describe "find middle value" do
+    it "finds the middle item in the list" do
+      # Arrange
+      @list.add_first(5)
+      @list.add_first(4)
+      @list.add_first(3)
+      @list.add_first(2)
+      @list.add_first(1)
+
+      # Act
+
+      # Assert
+      expect(@list.find_middle_value).must_equal 3
+    end
+  end
+
+  describe "find cycle" do
+    it "finds a cycle" do
+      # Arrange
+      @list.add_first(5)
+      @list.add_first(4)
+      @list.add_first(3)
+      @list.add_first(2)
+      @list.add_first(1)
+      @list.create_cycle
+      # Act
+
+      # Assert
+      expect(@list.has_cycle).must_equal true
+    end
+
+    it "returns false if there is no cycle" do
+      # Arrange
+      @list.add_first(5)
+      @list.add_first(4)
+      @list.add_first(3)
+      @list.add_first(2)
+      @list.add_first(1)
+      # Act
+
+      # Assert
+      expect(@list.has_cycle).must_equal false
+    end
+  end
 end
