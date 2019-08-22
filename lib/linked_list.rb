@@ -128,7 +128,15 @@ class LinkedList
   # Time Complexity:
   # Space Complexity
   def visit
-    raise NotImplementedError
+    return if @head == nil
+
+    current = @head
+
+    until current.next == nil
+      puts current.value
+
+      current = current.next
+    end
   end
 
   # method to delete the first node found with specified value
