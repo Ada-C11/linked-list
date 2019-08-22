@@ -49,8 +49,18 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_max
-      max = @head
-      raise NotImplementedError
+      max = nil
+      node = @head 
+
+      until node == nil
+        if node.value > max
+          max = node.value
+        else
+          node = node.next
+        end
+      end
+
+      return max
     end
 
     # method to return the min value in the linked list
@@ -58,7 +68,18 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_min
-      raise NotImplementedError
+      min = nil
+      node = @head 
+
+      until node == nil
+        if node.value < min
+          min = node.value
+        else
+          node = node.next
+        end
+      end
+
+      return min
     end
 
 
@@ -66,7 +87,15 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def length
-      raise NotImplementedError
+      length = 0
+      node = @head
+
+      until node == nil
+        length += 1
+        node = node.next
+      end
+
+      return length
     end
 
     # method that returns the value at a given index in the linked list
@@ -75,21 +104,54 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_at_index(index)
-      raise NotImplementedError
+      value = nil
+      i = 0
+      node = @head
+
+      return nil if node == nil
+
+      until i == (index + 1)
+        if i == index
+          value = node.value
+        end
+        node = node.next
+        i += 1
+      end
+
+      return value
     end
 
     # method to print all the values in the linked list
     # Time Complexity:  
     # Space Complexity
     def visit
-      raise NotImplementedError
+      node = @head
+
+      return nil if node == nil
+
+      until node == nil
+        puts node.value
+        node = node.next
+      end
     end
 
     # method to delete the first node found with specified value
     # Time Complexity:  
     # Space Complexity
     def delete(value)
-      raise NotImplementedError
+      node = @head
+      delete = false
+
+      until node == nil || delete == true
+        if node.value == value
+          @head = node.next
+          delete = true
+        elsif node.next.value == value
+          node.next = node.next.next
+          delete = true
+        end
+        node = node.next
+      end
     end
 
     # method to reverse the singly linked list
@@ -97,6 +159,13 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def reverse
+      node = @head
+
+      until node == nil
+        
+      end
+
+
       raise NotImplementedError
     end
 
@@ -133,13 +202,21 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_first
-      raise NotImplementedError
+      node = @head 
+
+      return nil if node == nil
+      return node.value
     end
 
     # method that inserts a given value as a new last node in the linked list
     # Time Complexity:  
     # Space Complexity
     def add_last(value)
+      node = @head 
+
+      return nil if node == nil
+
+
       raise NotImplementedError
     end
 
@@ -176,9 +253,9 @@ class LinkedList
 end
 
 
-class intersection
-  list1 = LinkedList.new().head().add_first(5).add_first.(3). add_first(1)
-  list2 = LinkedList.new().head().add_first(4).add_first.(2)
+# class intersection
+#   list1 = LinkedList.new().head().add_first(5).add_first.(3). add_first(1)
+#   list2 = LinkedList.new().head().add_first(4).add_first.(2)
 
-  if list1.
-end
+#   if list1.
+# end
