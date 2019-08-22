@@ -35,6 +35,16 @@ class LinkedList
   def search(value)
     # raise NotImplementedError
     return false if @head == nil
+
+    current = @head
+
+    until current.next == nil
+      return true if value == current.data
+
+      current = current.next
+    end
+
+    return false
   end
 
   # method to return the max value in the linked list
