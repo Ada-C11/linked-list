@@ -18,8 +18,8 @@ class LinkedList
 
   # method to add a new node with the specific data value in the linked list
   # insert the new node at the beginning of the linked list
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(1)
+  # Space Complexity: O(1)
   def add_first(value)
     #point head to a node
     new_node = Node.new(value, @head)
@@ -51,8 +51,8 @@ class LinkedList
   end
 
   # method that returns the length of the singly linked list
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n) where n is the size of the list
+  # Space Complexity: O(1)
   def length
     return 0 if @head.nil?
 
@@ -126,8 +126,8 @@ class LinkedList
   # Additional Exercises
   # returns the value in the first node
   # returns nil if the list is empty
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(1)
+  # Space Complexity: O(1)
   def get_first
     if @head.nil?
       return nil
