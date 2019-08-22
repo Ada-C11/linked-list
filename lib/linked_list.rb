@@ -71,9 +71,18 @@ class LinkedList
   # index count starts at 0
   # returns nil if there are fewer nodes in the linked list than the index value
   # Time Complexity:
-  # Space Complexity
+  # Space Complexity:
   def get_at_index(index)
-    raise NotImplementedError
+    return nil if index > (self.length - 1)
+
+    current = @head
+
+    until index == 0
+      current = current.next
+      index -= 1
+    end
+
+    return current.data
   end
 
   # method to print all the values in the linked list
