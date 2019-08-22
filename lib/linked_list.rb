@@ -22,7 +22,7 @@ class LinkedList
   # Space Complexity
   def add_first(value)
     #point head to a node
-    new_node = Node.new(value)
+    new_node = Node.new(value, @head)
     @head = new_node
   end
 
@@ -54,7 +54,17 @@ class LinkedList
   # Time Complexity:
   # Space Complexity
   def length
-    raise NotImplementedError
+    return 0 if @head.nil?
+
+    count = 1
+    current = @head
+
+    while current.next
+      count += 1
+      current = current.next
+    end
+
+    return count
   end
 
   # method that returns the value at a given index in the linked list
