@@ -179,8 +179,18 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_nth_from_end(n)
-      puts "in nth"
-      puts length
+      selected_index = length - n - 1
+      
+      if n >= length 
+        return nil
+      end
+      current = @head
+      i = 0
+        while i < selected_index && current.next
+          current = current.next
+          i += 1
+        end
+        return current.data
     end
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
@@ -220,7 +230,7 @@ class LinkedList
         while current != nil
           if current.next == nil
             current.next = new_node
-            return "inserted"
+            return 
           end
         current = current.next
         end
