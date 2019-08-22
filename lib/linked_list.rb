@@ -21,7 +21,9 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def add_first(value)
-      raise NotImplementedError
+      node = Node.new()
+      node.next = @head
+      @head = node
     end
 
     # method to find if the linked list contains a node with specified value
@@ -29,7 +31,17 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def search(value)
-      raise NotImplementedError
+      node = @head
+      
+      until node == nil
+        if node == value
+          return true
+        else
+          node = node.next
+        end
+      end
+
+      return false
     end
 
     # method to return the max value in the linked list
@@ -37,6 +49,7 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_max
+      max = @head
       raise NotImplementedError
     end
 
@@ -160,4 +173,12 @@ class LinkedList
 
       current.next = @head # make the last node link to first node
     end
+end
+
+
+class intersection
+  list1 = LinkedList.new().head().add_first(5).add_first.(3). add_first(1)
+  list2 = LinkedList.new().head().add_first(4).add_first.(2)
+
+  if list1.
 end
