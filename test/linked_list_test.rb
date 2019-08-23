@@ -1,6 +1,5 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
-require 'minitest/skip_dsl'
 
 require_relative 'test_helper'
 
@@ -80,6 +79,7 @@ describe LinkedList do
         it "will put new items to the rear of the list" do
             # Arrange
             @list.add_last(2)
+            
             # Act-Assert
             expect(@list.length).must_equal 1
             expect(@list.get_last).must_equal 2
@@ -161,11 +161,11 @@ describe LinkedList do
             @list.add_first(4)
             @list.add_first(3)
             @list.add_first(2)
-            
+        
             # Act
             # delete fist node (requires updating head)
             @list.delete(2)
-            
+    
             # Assert
             expect(@list.get_first).must_equal 3
             expect(@list.length).must_equal 4
