@@ -18,8 +18,8 @@ class LinkedList
 
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity: O(1) 
+    # Space Complexity: O(n) where n is the number of nodes
     def add_first(value)
       if !@head 
         @head = Node.new(value)
@@ -59,7 +59,13 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def length
-      raise NotImplementedError
+      count = 0
+      curr = @head
+      while curr && @head
+        curr = curr.next
+        count += 1
+      end
+      return count
     end
 
     # method that returns the value at a given index in the linked list
