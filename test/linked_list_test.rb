@@ -69,39 +69,39 @@ describe LinkedList do
         end
     end
 
-#     describe "addLast & getLast" do
-#         it "will add to the front if the list is empty" do
-#             # Arrange
-#             @list.add_last(1)
-#             # Act-Assert
-#             expect(@list.get_first).must_equal 1
-#         end
+    describe "addLast & getLast" do
+        it "will add to the front if the list is empty" do
+            # Arrange
+            @list.add_last(1)
+            # Act-Assert
+            expect(@list.get_first).must_equal 1
+        end
 
-#         it "will put new items to the rear of the list" do
-#             # Arrange
-#             @list.add_last(2)
-#             # Act-Assert
-#             expect(@list.length).must_equal 1
-#             expect(@list.get_last).must_equal 2
+        it "will put new items to the rear of the list" do
+            # Arrange
+            @list.add_last(2)
+            # Act-Assert
+            expect(@list.length).must_equal 1
+            expect(@list.get_last).must_equal 2
 
-#             # Arrange
-#             @list.add_last(3)
-#             # Act-Assert
-#             expect(@list.get_first).must_equal 2
-#             expect(@list.get_last).must_equal 3
-#             expect(@list.length).must_equal 2
+            # Arrange
+            @list.add_last(3)
+            # Act-Assert
+            expect(@list.get_first).must_equal 2
+            expect(@list.get_last).must_equal 3
+            expect(@list.length).must_equal 2
 
-#             @list.add_last(4)
-#             expect(@list.get_first).must_equal 2
-#             expect(@list.get_last).must_equal 4
-#             expect(@list.length).must_equal 3
-#         end
+            @list.add_last(4)
+            expect(@list.get_first).must_equal 2
+            expect(@list.get_last).must_equal 4
+            expect(@list.length).must_equal 3
+        end
         
-#         it "will return `nil` for `get_last` if the list is empty" do
-#             # Act-Assert
-#             expect(@list.get_last).must_be_nil
-#         end
-#     end
+        it "will return `nil` for `get_last` if the list is empty" do
+            # Act-Assert
+            expect(@list.get_last).must_be_nil
+        end
+    end
 
 #     describe 'get_at_index' do
 #         it 'returns nil if the index is outside the bounds of the list' do

@@ -140,7 +140,23 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def add_last(value)
-      raise NotImplementedError
+      last = get_last_node()
+      new_node = Node.new(value)
+      if last
+        last.next = new_node
+      else 
+        @head = new_node
+      end
+      return true
+    end
+
+    def get_last_node
+      return if !@head
+      curr = @head
+      while curr.next
+        curr = curr.next
+      end
+      return curr
     end
 
     # method that returns the value of the last node in the linked list
@@ -148,7 +164,9 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_last
-      raise NotImplementedError
+      last_node = get_last_node()
+      return last_node.data if last_node
+      return
     end
 
     # method to insert a new node with specific data value, assuming the linked
