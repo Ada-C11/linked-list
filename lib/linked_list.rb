@@ -18,20 +18,29 @@ class LinkedList
 
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
-    # Time Complexity:  O(1) constant 
+    # Time Complexity:  O(1) constant
     # Space Complexity: O(1) constant
     def add_first(value)
       # make a new node temp
-      temp = Node.new(value, @head) # passing @head sets temp.next = @head      
+      temp = Node.new(value, @head) # passing @head sets temp.next = @head
       @head = temp # set head pointer to new node temp
     end
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
-    # Time Complexity:  
-    # Space Complexity:
+    # Time Complexity: O(n) where n is the length of the list
+    # Space Complexity: O(1)
     def search(value)
-      raise NotImplementedError
+      return false if !@head
+
+      current = @head
+
+      until current == nil
+        return true if current.data == value
+        current = current.next
+      end
+
+      return false
     end
 
     # method to return the max value in the linked list
@@ -100,10 +109,10 @@ class LinkedList
       # return nil if !@head
 
       # ^^^^^^^ NOTE FOR CHRIS ^^^^^^^^
-      # THIS CODE WOULD WORK FOR THE EXISTING TEST. I WROTE ANOTHER TEST TO 
+      # THIS CODE WOULD WORK FOR THE EXISTING TEST. I WROTE ANOTHER TEST TO
       # ENSURE CODE IS NEEDED TO CATCH AN OUT OF BOUNDS INDEX WHEN THE LIST
       # IS NOT EMPTY. SEE MY TEST FILE.
-      
+
       current = @head
       count = 0
       until count == index
@@ -119,7 +128,7 @@ class LinkedList
     end
 
     # method to print all the values in the linked list
-    # Time Complexity:  
+    # Time Complexity:
     # Space Complexity
     def visit
       return if !@head
@@ -135,16 +144,16 @@ class LinkedList
     # Space Complexity:  O(1) constant
     def delete(value)
       # find the node with the given value
-      
+
       # if list is empty
       return if !@head
 
-      # if value is at beginning of list 
+      # if value is at beginning of list
       if @head.data == value
         @head = @head.next
         return
       end
-      
+
       # if value is not at beginning of list
       current = @head
       until current.next.data == value
@@ -157,7 +166,7 @@ class LinkedList
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
     # Time Complexity:  O(n) where n is the length of the list
-    # Space Complexity:  O(1) 
+    # Space Complexity:  O(1)
     def reverse
       return nil if !@head
 
@@ -175,7 +184,7 @@ class LinkedList
 
     ## Advanced Exercises
     # returns the value at the middle element in the singly linked list
-    # Time Complexity:  
+    # Time Complexity:
     # Space Complexity:
     def find_middle_value
       # two pointers, one moves twice as fast as the other
@@ -205,22 +214,22 @@ class LinkedList
 
       # subtract n from length of list - 1 to get its index
       node_index = list_length - 1 - n
-      
-      # if n <= length - 1, navigate to node at index; return current.data 
+
+      # if n <= length - 1, navigate to node at index; return current.data
       return get_at_index(node_index)
     end
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
     # linked list links to a node already visited.
     # returns true if a cycle is found, false otherwise.
-    # Time Complexity:  
+    # Time Complexity:
     # Space Complexity
     def has_cycle
       raise NotImplementedError
     end
 
 
-    # Additional Exercises 
+    # Additional Exercises
     # returns the value in the first node
     # returns nil if the list is empty
     # Time Complexity:  O(1)
@@ -234,14 +243,14 @@ class LinkedList
     # Time Complexity:  O(n) where n is the length of the list
     # Space Complexity:  O(1)
     def add_last(value)
-      if !@head 
+      if !@head
         add_first(value)
         return
       end
 
       current = @head
-      current = current.next until !current.next 
-  
+      current = current.next until !current.next
+
       temp = Node.new(value)
       current.next = temp
 
@@ -253,25 +262,25 @@ class LinkedList
     # Space Complexity:  O(1)
     def get_last
       return nil if !@head
-      
+
       current = @head
-      current = current.next until !current.next 
+      current = current.next until !current.next
 
       return current.data
-      
+
     end
 
     # method to insert a new node with specific data value, assuming the linked
     # list is sorted in ascending order
-    # Time Complexity:  
+    # Time Complexity:
     # Space Complexity
     def insert_ascending(value)
       add_first(value) if !@head
       return if !value
 
       new_node = Node.new(value)
-      current = @head 
-     
+      current = @head
+
       add_first(value) if (new_node.data <= current.data)
 
       until !current.next || current.next.data > new_node.data
