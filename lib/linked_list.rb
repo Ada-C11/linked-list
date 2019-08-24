@@ -180,7 +180,7 @@ class LinkedList
     # Space Complexity O(1),  space required will always be the size of 1 node (cursor), and 1 int (index)
     def find_nth_from_end(n)
       list_length = self.length
-      return nil if n > list_length - 1
+      return nil if n > list_length - 1 || n < 0
       index = 1
       cursor = @head
       until (list_length - index) == n || !cursor.next
