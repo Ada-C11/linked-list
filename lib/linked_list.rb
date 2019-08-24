@@ -122,7 +122,12 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def visit
-      raise NotImplementedError
+      return if !@head
+      current = @head
+      until !current
+        puts current.data
+        current = current.next
+      end
     end
 
     # method to delete the first node found with specified value
@@ -171,9 +176,19 @@ class LinkedList
     ## Advanced Exercises
     # returns the value at the middle element in the singly linked list
     # Time Complexity:  
-    # Space Complexity
+    # Space Complexity:
     def find_middle_value
-      raise NotImplementedError
+      # two pointers, one moves twice as fast as the other
+      # return when the second pointer == nil
+      pointerA = @head
+      pointerB = pointerA.next.next
+      until !pointerB
+        pointerA = pointerA.next
+        pointerB = pointerB.next.next
+      end
+
+      return pointerA.data
+
     end
 
     # find the nth node from the end and return its value
@@ -251,7 +266,20 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def insert_ascending(value)
-      raise NotImplementedError
+      add_first(value) if !@head
+      return if !value
+
+      new_node = Node.new(value)
+      current = @head 
+     
+      add_first(value) if (new_node.data <= current.data)
+
+      until !current.next || current.next.data > new_node.data
+        current = current.next
+      end
+
+      new_node.next = current.next
+      current.next = new_node
     end
 
     # Helper method for tests
