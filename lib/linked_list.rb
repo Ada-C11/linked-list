@@ -52,26 +52,26 @@ class LinkedList
 
   # method to return the max value in the linked list
   # returns the data value and not the node
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n), n is the number of nodes in the LL
+  # Space Complexity: O(1)
   def find_max
-    if @head == nil
-      return nil
+    return nil if @head == nil
+
+    current = @head
+    max = current.data
+
+    until current.next == nil
+      if current.data > max
+        max = current.data
+      end
+      current = current.next
     end
 
-    # max = @head.data
-    # current = @head
+    if current.data > max
+      max = current.data
+    end
 
-    # until current.next == nil
-    #   if current.data > max
-    #     max = current.data
-    #   end
-    # end
-
-    # if current.data > max
-    #   max = current.data
-    # end
-    # return max
+    return max
   end
 
   # method to return the min value in the linked list
@@ -83,21 +83,17 @@ class LinkedList
       return nil
     end
 
-    min = @head.data
     current = @head
+    min = current.data
 
     until current.next == nil
       if current.data < min
         min = current.data
       end
-
-      puts "**************************************************************HI BABYNOSE!!!!      " + "Min: #{min}, current.next: #{current.next}, current.data: #{current.data}"
-
       current = current.next
     end
 
     if current.data < min
-      puts "help ********************************** help BN!" + "Min: #{min}, current.next: #{current.next}, current.data: #{current.data}"
       min = current.data
     end
 
@@ -105,33 +101,67 @@ class LinkedList
   end
 
   # method that returns the length of the singly linked list
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n), n is the number of nodes in the LL
+  # Space Complexity: O(1)
   def length
-    raise NotImplementedError
+    count_length = 0
+
+    return count_length if @head == nil
+    
+    current = @head
+
+    until current.next == nil
+      count_length += 1
+      current = current.next
+    end
+
+    return count_length + 1
+
+
   end
 
   # method that returns the value at a given index in the linked list
   # index count starts at 0
   # returns nil if there are fewer nodes in the linked list than the index value
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n), n is the length of the list
+  # Space Complexity: O(1)
   def get_at_index(index)
-    raise NotImplementedError
+
+    return nil if @head == nil
+
+    current = @head
+    counter = 0
+
+    until counter == index
+        if current.next == nil
+          return nil
+        else
+          current = current.next
+          counter += 1
+        end
+    end
+    return current.data
   end
 
   # method to print all the values in the linked list
   # Time Complexity:
   # Space Complexity
   def visit
-    raise NotImplementedError
+     current = @head
+
+     until current.next == nil
+      puts current.data
+      current = current.next
+     end
+     puts current.data
+    
   end
 
   # method to delete the first node found with specified value
   # Time Complexity:
   # Space Complexity
   def delete(value)
-    raise NotImplementedError
+    
   end
 
   # method to reverse the singly linked list
@@ -184,8 +214,30 @@ class LinkedList
   # Time Complexity:
   # Space Complexity
   def add_last(value)
-    raise NotImplementedError
+    # new_node = Node.new(value)
+    # if @head == nil
+    #   @head = new_node
+    # else
+    #   current = @head
+    #   until current.next == nil
+    #     current = current.next
+    #   end
+    #   current = new_node
+    # end
+
+    new_node = Node.new(value)
+
+    if @head == nil
+      @head = new_node
+    else
+      current = @head
+      while current.next != nil
+        current = current.next
+      end
+      current.next = new_node
+    end
   end
+
 
   # method that returns the value of the last node in the linked list
   # returns nil if the linked list is empty
@@ -218,3 +270,5 @@ class LinkedList
     current.next = @head # make the last node link to first node
   end
 end
+
+
