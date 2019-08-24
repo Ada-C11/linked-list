@@ -103,26 +103,26 @@ describe LinkedList do
         end
     end
 
-#     describe 'get_at_index' do
-#         it 'returns nil if the index is outside the bounds of the list' do
-#             # Act-Assert
-#             expect(@list.get_at_index(3)).must_be_nil
-#         end
+    describe 'get_at_index' do
+        it 'returns nil if the index is outside the bounds of the list' do
+            # Act-Assert
+            expect(@list.get_at_index(3)).must_be_nil
+        end
 
-#         it 'can retrieve an item at an index in the list' do
-#             # Arrange
-#             @list.add_first(1)
-#             @list.add_first(2)
-#             @list.add_first(3)
-#             @list.add_first(4)
+        it 'can retrieve an item at an index in the list' do
+            # Arrange
+            @list.add_first(1)
+            @list.add_first(2)
+            @list.add_first(3)
+            @list.add_first(4)
 
-#             # Act-Assert
-#             expect(@list.get_at_index(0)).must_equal 4
-#             expect(@list.get_at_index(1)).must_equal 3
-#             expect(@list.get_at_index(2)).must_equal 2
-#             expect(@list.get_at_index(3)).must_equal 1
-#         end
-#     end
+            # Act-Assert
+            expect(@list.get_at_index(0)).must_equal 4
+            expect(@list.get_at_index(1)).must_equal 3
+            expect(@list.get_at_index(2)).must_equal 2
+            expect(@list.get_at_index(3)).must_equal 1
+        end
+    end
 
 #     describe 'max and min values' do
 #         it 'returns nil if the list is empty' do
