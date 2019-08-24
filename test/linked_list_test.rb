@@ -233,4 +233,22 @@ describe LinkedList do
             expect(@list.find_nth_from_end(3)).must_equal 4
         end
     end
+
+    describe "insert ascending" do
+        it 'can insert a value at the correct position in a sorted list' do
+            # Arrange
+            @list.add_first(5)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            
+            # Act
+            @list.insert_ascending(4)
+
+            # Assert
+            
+            expect(@list.find_nth_from_end(1)).must_equal 4
+
+        end
+    end
 end

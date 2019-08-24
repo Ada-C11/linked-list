@@ -244,7 +244,13 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def insert_ascending(value)
-      raise NotImplementedError
+      new_node = Node.new(value)
+      current = @head
+      until !current.next || current.next.data >= value
+        current = current.next
+      end
+      new_node.next = current.next
+      current.next = new_node
     end
 
     # Helper method for tests
