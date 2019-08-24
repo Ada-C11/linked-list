@@ -197,7 +197,14 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def has_cycle
-      raise NotImplementedError
+      visited_nodes = []
+      cursor = @head
+      until !cursor.next
+        visited_nodes << cursor
+        cursor = cursor.next
+        return true if visited_nodes.include?(cursor)
+      end
+      return false
     end
 
 

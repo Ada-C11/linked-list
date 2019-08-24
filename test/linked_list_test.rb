@@ -246,9 +246,29 @@ describe LinkedList do
             @list.insert_ascending(4)
 
             # Assert
-            
+            expect(@list.find_nth_from_end(0)).must_equal 5
             expect(@list.find_nth_from_end(1)).must_equal 4
+            expect(@list.find_nth_from_end(2)).must_equal 3
+            expect(@list.length).must_equal 5
+        end
+    end
 
+    describe "has cycle" do
+        it "detects if the linked list contains a cycle" do
+            # Arrange
+            @list.add_first(5)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+
+            # Assert
+            expect(@list.has_cycle).must_equal false
+            
+            # Act
+            @list.create_cycle
+
+            # Assert
+            expect(@list.has_cycle).must_equal true
         end
     end
 end
