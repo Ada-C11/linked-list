@@ -137,9 +137,35 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def reverse
-      raise NotImplementedError
+      return nil if !@head
+      @head = build_reversed
     end
 
+    def build_reversed(new_head=nil)
+      cursor = @head
+      until !cursor.next
+        prev = cursor
+        cursor = cursor.next
+      end
+
+      if !new_head
+        new_head = cursor
+        tail = new_head
+      else
+        tail = new_head
+        tail = tail.next until !tail.next
+      end
+      tail.next = prev
+      prev ? prev.next = nil : @head = nil
+
+      
+
+      if @head 
+        return build_reversed(new_head)
+      else
+        return new_head
+      end
+    end
 
     ## Advanced Exercises
     # returns the value at the middle element in the singly linked list
@@ -154,7 +180,15 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_nth_from_end(n)
-      raise NotImplementedError
+      list_length = self.length
+      return nil if n > list_length - 1
+      index = 1
+      cursor = @head
+      until (list_length - index) == n || !cursor.next
+        index +=1
+        cursor = cursor.next
+      end
+      return cursor.data
     end
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
