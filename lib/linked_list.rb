@@ -128,8 +128,8 @@ class LinkedList
     end
 
     # method to print all the values in the linked list
-    # Time Complexity:
-    # Space Complexity
+    # Time Complexity:  O(n) linear, where the maximum value of n is the length of the list
+    # Space Complexity:  O(1) constant
     def visit
       return if !@head
       current = @head
@@ -184,14 +184,16 @@ class LinkedList
 
     ## Advanced Exercises
     # returns the value at the middle element in the singly linked list
-    # Time Complexity:
-    # Space Complexity:
+    # Time Complexity:  O(n) linear, where the maximum value of n is the length of the list
+    # Space Complexity:  O(1) constant
     def find_middle_value
       # two pointers, one moves twice as fast as the other
-      # return when the second pointer == nil
+      # return value at first pointer when the second pointer == nil
+      return nil if !@head # return nil if list is empty
+
       pointerA = @head
-      pointerB = pointerA.next.next
-      until !pointerB
+      pointerB = pointerA
+      until !pointerB || !pointerB.next
         pointerA = pointerA.next
         pointerB = pointerB.next.next
       end
@@ -222,10 +224,25 @@ class LinkedList
     # checks if the linked list has a cycle. A cycle exists if any node in the
     # linked list links to a node already visited.
     # returns true if a cycle is found, false otherwise.
-    # Time Complexity:
-    # Space Complexity
+    # Time Complexity: O(n) where n is the length of the list
+    # Space Complexity: O(1)
     def has_cycle
+
       raise NotImplementedError
+
+      # Option 1: O(n-squared) Time Complexity, O(2n) Space Complexity
+      # - duplicate the list as you traverse it
+      # - at each node in the original list, loop through the entire duplicated list checking if any of those nodes match the current node in the first list
+      # - if there's a match, return true (found a cycle)
+      # - if you get to the end of the first list with no matches, return false
+
+      # Option 2: O(n) Time Complexity, O(2n) Space Complexity
+      # - traverse the list
+      # - at each node, store a copy of the node in a hash table
+      # - check each node to see if it already exists in the hash table
+      # - if it does, return true (found a cycle)
+      # - if you get to the end of the first list with no matches, return false
+
     end
 
 
@@ -272,8 +289,8 @@ class LinkedList
 
     # method to insert a new node with specific data value, assuming the linked
     # list is sorted in ascending order
-    # Time Complexity:
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the length of the list
+    # Space Complexity:  O(1)
     def insert_ascending(value)
       add_first(value) if !@head
       return if !value
