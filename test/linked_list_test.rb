@@ -142,7 +142,7 @@ describe LinkedList do
             end
             @list.add_last(100)
             @list.add_first(-12)
-            
+
             # Act-Assert
             expect(@list.find_max).must_equal 100
             expect(@list.find_min).must_equal(-12)
@@ -198,7 +198,7 @@ describe LinkedList do
         end
     end
 
-    describe "nth_from_the_end" do
+    xdescribe "nth_from_the_end" do
         it 'returns nil if n is outside the bounds of the list' do
             # Act-Assert
             expect(@list.find_nth_from_end(3)).must_be_nil
