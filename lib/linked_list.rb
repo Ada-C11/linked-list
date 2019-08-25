@@ -92,15 +92,21 @@ class LinkedList
     # Time Complexity:  O(n) where n is the number of nodes
     # Space Complexity: O(n) where n is the number of nodes
     def get_at_index(index)
+      target_node = node_at_index(index)
+      return if !target_node
+      return target_node.data 
+    end
+
+    def node_at_index(index)
       length = length()
-      return nil if length - 1 < index ||  index < 0
+      return if length - 1 < index ||  index < 0
       curr = @head
       count = 0
       while index != count
         curr = curr.next
         count += 1
       end
-      return curr.data
+      return curr
     end
 
     # method to print all the values in the linked list
@@ -129,7 +135,6 @@ class LinkedList
       end
     end
 
-  
     def delete_first_node
       temp = @head
       @head = @head.next
@@ -164,7 +169,9 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_nth_from_end(n)
-      raise NotImplementedError
+      target_node = node_at_index(length() - n - 1)
+      return if !target_node
+      return target_node.data
     end
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
