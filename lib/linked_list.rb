@@ -43,7 +43,16 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_max
-      raise NotImplementedError
+      return if !@head
+      curr = @head
+      max = curr.data
+      while curr
+        if max < curr.data 
+          max = curr.data
+        end
+        curr = curr.next 
+      end
+      return max
     end
 
     # method to return the min value in the linked list
@@ -51,7 +60,16 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_min
-      raise NotImplementedError
+      return if !@head
+      curr = @head
+      min = curr.data
+      while curr
+        if min > curr.data 
+          min = curr.data
+        end
+        curr = curr.next 
+      end
+      return min
     end
 
 
