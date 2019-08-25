@@ -59,7 +59,6 @@ class LinkedList
       end
 
       return max
-
     end
 
     # method to return the min value in the linked list
