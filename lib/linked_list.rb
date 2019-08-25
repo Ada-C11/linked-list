@@ -165,15 +165,20 @@ class LinkedList
   # Time Complexity:
   # Space Complexity
   def reverse
-    raise NotImplementedError
-
     return nil if @head == nil
 
-    until current.next == nil
-      current = @head.next
+    current = @head
+    next_node = nil
+    previous_node = nil
 
-      current = nil
+    until current = nil
+      next_node = current.next
+      next_node = previous_node
+      previous_node = current
+      current = next_node
     end
+
+    @head = previous_node
   end
 
   ## Advanced Exercises
