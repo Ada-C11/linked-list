@@ -114,7 +114,32 @@ class LinkedList
     # Time Complexity:  O(n) where n is the number of nodes
     # Space Complexity: O(n) where n is the number of nodes
     def delete(value)
-      raise NotImplementedError
+      return if !@head
+      curr = @head
+      if curr.data == value
+        delete_first_node()
+      else
+        while curr.next
+          if curr.next.data == value
+            remove_next_node(curr)
+          else
+            curr = curr.next
+          end
+        end
+      end
+    end
+
+  
+    def delete_first_node
+      temp = @head
+      @head = @head.next
+      temp.next = nil
+    end
+
+    def remove_next_node(node)
+      temp = node.next 
+      node.next = node.next.next
+      temp.next = nil
     end
 
     # method to reverse the singly linked list
