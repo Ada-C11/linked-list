@@ -149,54 +149,54 @@ describe LinkedList do
         end
     end
 
-#     describe "delete" do
-#         it "delete from empty linked list is a no-op" do
-#             # Assert
-#             expect(@list.length).must_equal 0
-#             # Act
-#             @list.delete(4)
-#             # Assert
-#             expect(@list.length).must_equal 0
-#         end
+    describe "delete" do
+        it "delete from empty linked list is a no-op" do
+            # Assert
+            expect(@list.length).must_equal 0
+            # Act
+            @list.delete(4)
+            # Assert
+            expect(@list.length).must_equal 0
+        end
 
-#         it "can delete valid values from list" do
-#             # Arrange
-#             @list.add_last(9)
-#             @list.add_last(10)
-#             @list.add_first(4)
-#             @list.add_first(3)
-#             @list.add_first(2)
+        it "can delete valid values from list" do
+            # Arrange
+            @list.add_last(9)
+            @list.add_last(10)
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
             
-#             # Act
-#             # delete fist node (requires updating head)
-#             @list.delete(2)
+            # Act
+            # delete fist node (requires updating head)
+            @list.delete(2)
             
-#             # Assert
-#             expect(@list.get_first).must_equal 3
-#             expect(@list.length).must_equal 4
-#             expect(@list.get_last).must_equal 10
-#             expect(@list.find_max).must_equal 10
-#             expect(@list.find_min).must_equal 3
+            # Assert
+            expect(@list.get_first).must_equal 3
+            expect(@list.length).must_equal 4
+            expect(@list.get_last).must_equal 10
+            expect(@list.find_max).must_equal 10
+            expect(@list.find_min).must_equal 3
             
-#             # Act (again)
-#             # delete last node
-#             @list.delete(10)
-#             # Assert
-#             expect(@list.get_first).must_equal 3
-#             expect(@list.length).must_equal 3
-#             expect(@list.get_last).must_equal 9
-#             expect(@list.find_max).must_equal 9
-#             expect(@list.find_min).must_equal 3
+            # Act (again)
+            # delete last node
+            @list.delete(10)
+            # Assert
+            expect(@list.get_first).must_equal 3
+            expect(@list.length).must_equal 3
+            expect(@list.get_last).must_equal 9
+            expect(@list.find_max).must_equal 9
+            expect(@list.find_min).must_equal 3
 
-#             # delete fist node (requires updating head)
-#             @list.delete(4)
-#             expect(@list.get_first).must_equal 3
-#             expect(@list.length).must_equal 2
-#             expect(@list.get_last).must_equal 9
-#             expect(@list.find_max).must_equal 9
-#             expect(@list.find_min).must_equal 3
-#         end
-#     end
+            # delete fist node (requires updating head)
+            @list.delete(4)
+            expect(@list.get_first).must_equal 3
+            expect(@list.length).must_equal 2
+            expect(@list.get_last).must_equal 9
+            expect(@list.find_max).must_equal 9
+            expect(@list.find_min).must_equal 3
+        end
+    end
 
 #     describe "nth_from_the_end" do
 #         it 'returns nil if n is outside the bounds of the list' do

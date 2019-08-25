@@ -40,8 +40,8 @@ class LinkedList
 
     # method to return the max value in the linked list
     # returns the data value and not the node
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the number of nodes
+    # Space Complexity: O(n) where n is the number of nodes
     def find_max
       return if !@head
       curr = @head
@@ -57,8 +57,8 @@ class LinkedList
 
     # method to return the min value in the linked list
     # returns the data value and not the node
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the number of nodes
+    # Space Complexity: O(n) where n is the number of nodes
     def find_min
       return if !@head
       curr = @head
@@ -74,8 +74,8 @@ class LinkedList
 
 
     # method that returns the length of the singly linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the number of nodes
+    # Space Complexity: O(n) where n is the number of nodes
     def length
       count = 0
       curr = @head
@@ -89,8 +89,8 @@ class LinkedList
     # method that returns the value at a given index in the linked list
     # index count starts at 0
     # returns nil if there are fewer nodes in the linked list than the index value
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the number of nodes
+    # Space Complexity: O(n) where n is the number of nodes
     def get_at_index(index)
       length = length()
       return nil if length - 1 < index ||  index < 0
@@ -111,8 +111,8 @@ class LinkedList
     end
 
     # method to delete the first node found with specified value
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the number of nodes
+    # Space Complexity: O(n) where n is the number of nodes
     def delete(value)
       raise NotImplementedError
     end
@@ -155,16 +155,16 @@ class LinkedList
     # Additional Exercises 
     # returns the value in the first node
     # returns nil if the list is empty
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(1)
+    # Space Complexity: O(n) where n is the number of nodes
     def get_first
       return @head.data if @head
       return 
     end
 
     # method that inserts a given value as a new last node in the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the number of nodes
+    # Space Complexity: O(n) where n is the number of nodes
     def add_last(value)
       last = get_last_node()
       new_node = Node.new(value)
@@ -187,8 +187,8 @@ class LinkedList
 
     # method that returns the value of the last node in the linked list
     # returns nil if the linked list is empty
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the number of nodes
+    # Space Complexity: O(n) where n is the number of nodes
     def get_last
       last_node = get_last_node()
       return last_node.data if last_node
