@@ -233,4 +233,22 @@ describe LinkedList do
             expect(@list.find_nth_from_end(3)).must_equal 4
         end
     end
+
+    describe "find middle value" do
+        it "will return nil if the list is empty" do
+            expect(@list.find_middle_value).must_be_nil
+        end
+
+        it "can retrieve the middle value from the list" do
+            @list.add_first(5)
+            @list.add_first(4)
+            @list.add_first(3)
+
+            expect(@list.find_middle_value).must_equal 4
+
+            @list.add_first(2)
+
+            expect(@list.find_middle_value).must_equal 4
+        end
+    end
 end

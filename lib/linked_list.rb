@@ -23,12 +23,8 @@ class LinkedList
     def add_first(value)
       new_node = Node.new(value)
 
-      if !@head
-        @head = new_node
-      else
-        new_node.next = @head
-        @head = new_node
-      end
+      new_node.next = @head if @head
+      @head = new_node
     end
 
     # method to find if the linked list contains a node with specified value
@@ -78,14 +74,12 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def length
-      return 0 if !@head
-      
       current = @head
-      node_count = 1 
+      node_count = 0 
 
-      until !current.next
-        node_count += 1
+      while current
         current = current.next
+        node_count += 1
       end
 
       return node_count
@@ -136,7 +130,19 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def reverse
-      raise NotImplementedError
+      return if !@head || !@head.next
+
+      previous = nil
+      current = @head
+
+      while current
+        subsequent = current.next
+        current.next = previous
+        previous = current
+        current = subsequent
+      end
+
+      @head = previous
     end
 
 
@@ -145,7 +151,12 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_middle_value
-      raise NotImplementedError
+      return if !@head
+
+      current = @head
+      (self.length / 2).times { current = current.next }
+
+      return current.data
     end
 
     # find the nth node from the end and return its value
