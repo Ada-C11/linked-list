@@ -82,8 +82,8 @@ class LinkedList
 
 
     # method that returns the length of the singly linked list
-    # Time Complexity: O(n)
-    # Space Complexity: O
+    # Time Complexity: O(n) - must count all nodes
+    # Space Complexity: O - constant value returned
     def length
       count = 0
       current = @head
@@ -102,8 +102,8 @@ class LinkedList
     # method that returns the value at a given index in the linked list
     # index count starts at 0
     # returns nil if there are fewer nodes in the linked list than the index value
-    # Time Complexity:  O(n)
-    # Space Complexity: O
+    # Time Complexity:  O(n) - worst case
+    # Space Complexity: O - constant value returned
     def get_at_index(index)
       current = @head
 
@@ -119,8 +119,8 @@ class LinkedList
     end
 
     # method to print all the values in the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity O - just printing to console, no new memory needed
     def visit
       current = @head
       
@@ -157,10 +157,17 @@ class LinkedList
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity O(n)
     def reverse
-      raise NotImplementedError
+      current = @head
+      reversed_list = LinkedList.new
+
+      while current.next != nil
+        reversed_list.add_last(current)
+        current = current.next
+      end
+      return reversed_list
     end
 
 
@@ -174,10 +181,19 @@ class LinkedList
 
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity O - how is this method different from find_at_index??
     def find_nth_from_end(n)
-      raise NotImplementedError
+      current = @head
+
+      return nil if @head == nil
+      count = 0
+
+      while count < n && current.next != nil
+        current = current.next
+        count += 1
+      end
+      return current.data
     end
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
