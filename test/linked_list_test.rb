@@ -334,4 +334,35 @@ describe LinkedList do
         end
     end
 
+
+    describe "insert_ascending(value)" do 
+        it "will add to list if list is empty" do 
+            @list.insert_ascending(5)
+            expect(@list.length).must_equal 1
+            expect(@list.get_first()).must_equal 5
+        end
+
+        it 'will add to front of list if less than all values' do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.insert_ascending(1)
+            expect(@list.length).must_equal 4
+            expect(@list.get_first()).must_equal 1
+
+        end
+
+        it "will add to back of list if greater than all values" do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.insert_ascending(5)
+            expect(@list.length).must_equal 4
+            expect(@list.get_last()).must_equal 5
+        end
+
+        it "will add in middle in correct order" do 
+        end
+    end
+
 end

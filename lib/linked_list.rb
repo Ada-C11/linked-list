@@ -160,8 +160,8 @@ class LinkedList
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: passing pointer not list to rec statck so O(n)
     def reverse
       curr = @head
       reverse_links(curr)
@@ -179,8 +179,8 @@ class LinkedList
 
     ## Advanced Exercises
     # returns the value at the middle element in the singly linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O(n) where n is the number of nodes
     def find_middle_value
       return if !@head
       fast,slow = @head, @head
@@ -193,8 +193,8 @@ class LinkedList
 
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O(n) where n is the number of nodes
     def find_nth_from_end(n)
       target_node = node_at_index(length() - n - 1)
       return if !target_node
@@ -204,8 +204,8 @@ class LinkedList
     # checks if the linked list has a cycle. A cycle exists if any node in the
     # linked list links to a node already visited.
     # returns true if a cycle is found, false otherwise.
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O(n) where n is the number of nodes
     def has_cycle
       return false if !@head
       fast, slow = @head, @head
@@ -265,10 +265,22 @@ class LinkedList
 
     # method to insert a new node with specific data value, assuming the linked
     # list is sorted in ascending order
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O(n) where n is the number of nodes
     def insert_ascending(value)
-      raise NotImplementedError
+      new_node = Node.new(value)
+      if !@head || value <= @head.data
+        new_node.next = @head 
+        @head = new_node
+        return
+      end
+      curr = @head 
+      while curr.next && curr.next.data <= value
+        curr = curr.next
+      end
+      temp = curr.next
+      curr.next =  new_node
+      new_node.next = temp
     end
 
     # Helper method for tests
