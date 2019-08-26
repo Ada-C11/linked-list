@@ -196,14 +196,15 @@ class LinkedList
     # linked list links to a node already visited.
     # returns true if a cycle is found, false otherwise.
     # Time Complexity:  O(n) where n is the length of the linked list
-    # Space Complexity O(n) if the length of visited nodes is equal to the length of the list
+    # Space Complexity O(1) size of 2 nodes (slow_p and fast_p)
+    # slow/fast pointer approach adapted from https://www.geeksforgeeks.org/detect-loop-in-a-linked-list/
     def has_cycle
-      visited_nodes = []
-      cursor = @head
-      until !cursor.next
-        visited_nodes << cursor
-        cursor = cursor.next
-        return true if visited_nodes.include?(cursor)
+      slow_p = @head 
+      fast_p = @head 
+      while slow_p && fast_p && fast_p.next
+        slow_p = slow_p.next
+        fast_p = fast_p.next.next
+        return true if slow_p == fast_p
       end
       return false
     end
