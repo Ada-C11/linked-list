@@ -11,6 +11,7 @@ class Node
   end
 end
 
+
 # Defines the singly linked list
 class LinkedList
     def initialize
@@ -82,10 +83,10 @@ class LinkedList
       if !@head
         return length
       else
-        current = @head
-        while current
+        cursor = @head
+        while cursor
           length += 1
-          current = current.next
+          cursor = cursor.next
         end
       end
       return length
@@ -98,12 +99,13 @@ class LinkedList
     # Space Complexity O(1),  space required will always be the size of 1 node (cursor)
     def get_at_index(index)
       return nil unless @head
-      current = @head
+      return nil if index < 0
+      cursor = @head
       index.times do
-        return nil unless current.next
-        current = current.next
+        return nil unless cursor.next
+        cursor = cursor.next
       end
-      return current.data
+      return cursor.data
     end
 
     # method to print all the values in the linked list
@@ -134,7 +136,7 @@ class LinkedList
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity: O(n^2) , n for traverising length of old and new list, and n recursive calls
+    # Time Complexity: O(n^2) , n for traversing length of old and new list, and n recursive calls
     # Space Complexity: O(n^2), n for length of new list, and n recursive calls
     def reverse
       return nil if !@head
@@ -177,7 +179,7 @@ class LinkedList
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
     # Time Complexity:  O(n) where n is the length of the linked list
-    # Space Complexity O(1),  space required will always be the size of 1 node (cursor), and 1 int (index)
+    # Space Complexity O(1),  space required will always be the size of 1 node (cursor), and 2 int (index, list_length)
     def find_nth_from_end(n)
       list_length = self.length
       return nil if n > list_length - 1 || n < 0
@@ -224,11 +226,11 @@ class LinkedList
       if !@head
         @head = new_node
       else
-        current = @head
-        while current.next
-          current = current.next
+        cursor = @head
+        while cursor.next
+          cursor = cursor.next
         end
-        current.next = new_node
+        cursor.next = new_node
       end
     end
 
@@ -238,11 +240,11 @@ class LinkedList
     # Space Complexity O(1),  space required will always be the size of 1 node (cursor)
     def get_last
       return nil unless @head
-      current = @head
-      while current.next
-        current = current.next
+      cursor = @head
+      while cursor.next
+        cursor = cursor.next
       end
-    return current.data
+    return cursor.data
     end
 
     # method to insert a new node with specific data value, assuming the linked
@@ -251,12 +253,12 @@ class LinkedList
     # Space Complexity O(1),  space required will always be the size of 2 nodes (cursor, and new_node)
     def insert_ascending(value)
       new_node = Node.new(value)
-      current = @head
-      until !current.next || current.next.data >= value
-        current = current.next
+      cursor = @head
+      until !cursor.next || cursor.next.data >= value
+        cursor = cursor.next
       end
-      new_node.next = current.next
-      current.next = new_node
+      new_node.next = cursor.next
+      cursor.next = new_node
     end
 
     # Helper method for tests
@@ -266,11 +268,11 @@ class LinkedList
       return if @head == nil # don't do anything if the linked list is empty
 
       # navigate to last node
-      current = @head
-      while current.next != nil
-          current = current.next
+      cursor = @head
+      while cursor.next != nil
+          cursor = cursor.next
       end
 
-      current.next = @head # make the last node link to first node
+      cursor.next = @head # make the last node link to first node
     end
 end
