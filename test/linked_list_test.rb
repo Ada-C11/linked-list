@@ -305,4 +305,33 @@ describe LinkedList do
             expect(@list.find_middle_value).must_equal 2
         end
     end
+
+    describe "has_cycle" do 
+        it "will return false if list is empty" do 
+            expect(@list.has_cycle).must_equal false
+        end
+
+        it "will return true if list has a cyle" do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            @list.create_cycle()
+            expect(@list.has_cycle).must_equal true
+        end
+
+        it "will return true if list is length one and has a cycle" do 
+            @list.add_first(4)
+            @list.create_cycle()
+            expect(@list.has_cycle).must_equal true
+        end
+        it "will return false if list does not have a cycle" do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            expect(@list.has_cycle).must_equal false
+        end
+    end
+
 end

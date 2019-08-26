@@ -207,7 +207,16 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def has_cycle
-      raise NotImplementedError
+      return false if !@head
+      fast, slow = @head, @head
+      while fast.next.next
+        fast = fast.next.next
+        slow = slow.next
+        if fast == slow
+          return true
+        end
+      end
+      return false
     end
 
 
