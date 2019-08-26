@@ -226,8 +226,8 @@ class LinkedList
 
   # method that returns the value of the last node in the linked list
   # returns nil if the linked list is empty
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n) where n is the size of the list
+  # Space Complexity: O(1)
   def get_last
     return nil if @head.nil?
 
