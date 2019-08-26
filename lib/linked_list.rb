@@ -162,8 +162,8 @@ class LinkedList
 
   # method to reverse the singly linked list
   # note: the nodes should be moved and not just the values in the nodes
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n), where n is the number of nodes inside the linked list
+  # Space Complexity:  O(1), because the space required will always be the same
   def reverse
     return nil if @head == nil
 
@@ -171,9 +171,9 @@ class LinkedList
     next_node = nil
     previous_node = nil
 
-    until current = nil
+    until current == nil
       next_node = current.next
-      next_node = previous_node
+      current.next = previous_node
       previous_node = current
       current = next_node
     end
@@ -194,7 +194,21 @@ class LinkedList
   # Time Complexity:
   # Space Complexity
   def find_nth_from_end(n)
-    raise NotImplementedError
+    # raise NotImplementedError
+
+    return nil if @head == nil
+
+    count = 0
+    current = @head
+
+    until count == n
+      current = current.next
+      return nil if current == nil
+
+      count += 1
+    end
+
+    return current.data
   end
 
   # checks if the linked list has a cycle. A cycle exists if any node in the
