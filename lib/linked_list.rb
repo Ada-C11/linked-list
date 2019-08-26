@@ -137,7 +137,8 @@ class LinkedList
     # Space Complexity O
     def delete(value)
       current = @head
-      unless current
+      
+      if @head == nil
         return 0
       end
 
@@ -146,8 +147,8 @@ class LinkedList
         @head = current.next
       end
 
-      while current.next != nil
-        if current.next.data == value
+      while current!= nil
+        if current.next != nil && current.next.data == value
           current.next = current.next.next
         end
         current = current.next
