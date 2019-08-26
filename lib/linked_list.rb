@@ -21,7 +21,7 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def add_first(value)
-      new_node = Node.new(value)
+      new_node = Node.new(value, @head)
       @head = new_node
     end
 
@@ -30,7 +30,16 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def search(value)
-      raise NotImplementedError
+      current = @head
+
+      while current
+        if current.data == value
+          return true
+        else
+          current = current.next
+        end
+      end
+      return false
     end
 
     # method to return the max value in the linked list
@@ -38,7 +47,18 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_max
-      raise NotImplementedError
+      visited_node = @head
+      return nil if visited_node == nil
+
+      max = visited_node.data
+
+      while visited_node != nil
+        if visited_node.data  > max
+          max = visited_node.data
+        end
+        visited_node = visited_node.next
+      end
+      return max
     end
 
     # method to return the min value in the linked list
@@ -46,7 +66,18 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_min
-      raise NotImplementedError
+      return nil if @head == nil
+
+      visited_node = @head
+      min = visited_node.data
+
+      while visited_node != nil
+        if visited_node.data  < min
+          min = visited_node.data
+        end
+        visited_node = visited_node.next
+      end
+      return min
     end
 
 
@@ -54,7 +85,18 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def length
-      raise NotImplementedError
+      count = 0
+      current = @head
+
+      if @head == nil
+        return 0
+      else
+        until current == nil
+          current = current.next
+          count += 1
+        end
+      end
+      return count
     end
 
     # method that returns the value at a given index in the linked list
@@ -63,7 +105,7 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_at_index(index)
-      raise NotImplementedError
+      
     end
 
     # method to print all the values in the linked list
@@ -128,10 +170,22 @@ class LinkedList
     end
 
     # method that inserts a given value as a new last node in the linked list
-    # Time Complexity:  
+    # Time Complexity:O(n)
     # Space Complexity
     def add_last(value)
-      raise NotImplementedError
+      current = @head
+      count = 0
+    
+      if current == nil 
+        new_node = Node.new(value)
+        @head = new_node
+      else
+        while current.next != nil
+          current = current.next
+        end
+        last_node = Node.new(value)
+        current.next = last_node
+      end
     end
 
     # method that returns the value of the last node in the linked list

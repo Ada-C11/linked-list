@@ -51,7 +51,7 @@ describe LinkedList do
         end
     end
 
-    xdescribe "length" do
+    describe "length" do
         it "will return 0 for an empty list" do
             # Act-Assert
             expect(@list.length).must_equal 0
@@ -103,7 +103,7 @@ describe LinkedList do
         end
     end
 
-    xdescribe 'get_at_index' do
+    describe 'get_at_index' do
         it 'returns nil if the index is outside the bounds of the list' do
             # Act-Assert
             expect(@list.get_at_index(3)).must_be_nil
@@ -124,7 +124,7 @@ describe LinkedList do
         end
     end
 
-    xdescribe 'max and min values' do
+    describe 'max and min values' do
         it 'returns nil if the list is empty' do
             # Act-Assert
             expect(@list.find_max()).must_be_nil
