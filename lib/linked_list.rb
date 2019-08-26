@@ -32,7 +32,15 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def search(value)
-      raise NotImplementedError
+      return false if !@head
+
+      current = @head
+     
+      until !current
+        current.data == value ? (return true) : current = current.next
+      end
+
+      return false
     end
 
     # method to return the max value in the linked list
@@ -103,7 +111,18 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def visit
-      raise NotImplementedError
+      return if !@head
+
+      current = @head
+      list_string = ""
+
+      until !current
+        list_string << "#{current.data} "
+        current = current.next
+      end
+
+      print list_string
+      return list_string
     end
 
     # method to delete the first node found with specified value
@@ -178,7 +197,19 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def has_cycle
-      raise NotImplementedError
+      return false if !@head
+
+      visited_nodes = []
+      current = @head
+
+      until !current
+        return true if visited_nodes.include?(current)
+
+        visited_nodes << current
+        current = current.next
+      end
+
+      return false
     end
 
 
@@ -232,7 +263,17 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def insert_ascending(value)
-      raise NotImplementedError
+      return self.add_first(value) if !@head 
+
+      new_node = Node.new(value)
+      current = @head
+
+      until !current.next || current.next.data >= value
+        current = current.next
+      end
+
+      new_node.next = current.next
+      current.next = new_node
     end
 
     # Helper method for tests
