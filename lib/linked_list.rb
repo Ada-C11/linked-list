@@ -182,7 +182,13 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_middle_value
-      raise NotImplementedError
+      return if !@head
+      fast,slow = @head, @head
+      while fast.next && fast.next.next
+        fast = fast.next.next
+        slow = slow.next
+      end
+      return slow.data
     end
 
     # find the nth node from the end and return its value
