@@ -114,11 +114,17 @@ class LinkedList
       return curr
     end
 
-    # method to print all the values in the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # method to return a string of all the values in the linked list
+    # Time Complexity:  O(n) where n is the number of nodes
+    # Space Complexity: O(n) where n is the number of nodes
     def visit
-      raise NotImplementedError
+      node_values = ""
+      curr = @head
+      while curr
+        node_values << curr.data.to_s
+        curr = curr.next
+      end
+      return node_values
     end
 
     # method to delete the first node found with specified value

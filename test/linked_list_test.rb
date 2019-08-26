@@ -261,7 +261,24 @@ describe LinkedList do
             @list.add_first(1)
             
             expect(@list.search(2)).must_equal true
+            expect(@list.search(3)).must_equal true
+            expect(@list.search(1)).must_equal true
+            expect(@list.search(4)).must_equal true
+        end
+    end
+
+    describe "visit" do 
+        it "will return  empty string if list is empty" do 
+            expect(@list.visit).must_equal ""
         end
 
+        it "will return all the values in order as a string" do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            expect(@list.visit).must_equal "1234"
+
+        end
     end
 end
