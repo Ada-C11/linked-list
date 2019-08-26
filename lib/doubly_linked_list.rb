@@ -28,7 +28,7 @@ class DoublyLinkedList < LinkedList
     end
 
 # method that inserts a given value as a new last node in the linked list
-    # Time Complexity:  O(1), no traversal required
+    # Time Complexity:  O(1), no traversal required to find tail
     # Space Complexity O(1),  space required will always be the size of 2 nodes (cursor, and new_node)
     def add_last(value)
         new_node = DoublyLinkedNode.new(value, @tail, nil)
@@ -61,7 +61,7 @@ class DoublyLinkedList < LinkedList
           cursor = cursor.next
         end
         new_node.next = cursor.next
-        new_node.next.prev = new_node
+        new_node.next.prev = new_node if new_node.next
         new_node.prev = cursor
         cursor.next = new_node
       end
