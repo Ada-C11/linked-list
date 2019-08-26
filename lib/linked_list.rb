@@ -191,24 +191,27 @@ class LinkedList
 
   # find the nth node from the end and return its value
   # assume indexing starts at 0 while counting to n
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity:  O(n), where n is the number of nodes inside the linked list
+  # Space Complexity:  O(1), because the method requires the same amount of space each time
   def find_nth_from_end(n)
-    # raise NotImplementedError
-
     return nil if @head == nil
 
+    fast = @head
+    slow = @head
     count = 0
-    current = @head
 
     until count == n
-      current = current.next
-      return nil if current == nil
-
+      fast = fast.next
+      return nil if fast == nil
       count += 1
     end
 
-    return current.data
+    until fast.next == nil
+      fast = fast.next
+      slow = slow.next
+    end
+
+    return slow.data
   end
 
   # checks if the linked list has a cycle. A cycle exists if any node in the
