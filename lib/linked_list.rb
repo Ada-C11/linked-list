@@ -163,7 +163,7 @@ class LinkedList
   # method to reverse the singly linked list
   # note: the nodes should be moved and not just the values in the nodes
   # Time Complexity: O(n), where n is the number of nodes inside the linked list
-  # Space Complexity:  O(1), because the space required will always be the same
+  # Space Complexity:  O(1), because this method doesn't require additional storage (outside of existing variables)
   def reverse
     return nil if @head == nil
 
@@ -183,11 +183,9 @@ class LinkedList
 
   ## Advanced Exercises
   # returns the value at the middle element in the singly linked list
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity:  O(n), where n is the number of nodes inside the linked list
+  # Space Complexity: O(1), because this method doesn't require additional storage (outside of existing variables)
   def find_middle_value
-    # raise NotImplementedError
-
     fast = @head
     slow = @head
     count = 0
@@ -209,7 +207,7 @@ class LinkedList
   # find the nth node from the end and return its value
   # assume indexing starts at 0 while counting to n
   # Time Complexity:  O(n), where n is the number of nodes inside the linked list
-  # Space Complexity:  O(1), because the method requires the same amount of space each time
+  # Space Complexity:  O(1), because this method doesn't require additional storage (outside of existing variables)
   def find_nth_from_end(n)
     return nil if @head == nil
 
