@@ -232,4 +232,30 @@ describe LinkedList do
       expect(@list.find_nth_from_end(3)).must_equal 4
     end
   end
+
+  describe "find_middle_value" do
+    it "can retrive the middle value from odd number" do
+      # Arrange
+      @list.add_first(1)
+      @list.add_first(2)
+      @list.add_first(3)
+      @list.add_first(4)
+      @list.add_first(5)
+
+      # Act/Assert
+      expect(@list.find_middle_value()).must_equal 3
+    end
+
+    it "can retrive the middle value from even number" do
+      # Arrange
+
+      @list.add_first(1)
+      @list.add_first(2)
+      @list.add_first(3)
+      @list.add_first(4)
+
+      # Act/Assert
+      expect(@list.find_middle_value()).must_equal 2
+    end
+  end
 end
