@@ -182,18 +182,32 @@ class LinkedList
     # find the nth node from the end and return its value
     # assume indexing starts at 0 while counting to n
     # Time Complexity:  O(n)
-    # Space Complexity O - how is this method different from find_at_index??
+    # Space Complexity O
     def find_nth_from_end(n)
       current = @head
 
       return nil if @head == nil
-      count = 0
 
-      while count < n && current.next != nil
+      # need to know length
+      length = 0
+      while current != nil
         current = current.next
-        count += 1
+        length += 1
       end
-      return current.data
+
+      # return position from the end
+      position = length - n - 1
+      return nil if position < 0
+
+      search_node = @head
+      starting_index = 0
+      while search_node != nil
+        if starting_index == position
+          return search_node.data
+        end
+        starting_index += 1
+        search_node = search_node.next
+      end
     end
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
