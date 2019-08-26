@@ -248,7 +248,6 @@ describe LinkedList do
 
     it "can retrive the middle value from even number" do
       # Arrange
-
       @list.add_first(1)
       @list.add_first(2)
       @list.add_first(3)
