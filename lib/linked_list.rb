@@ -4,7 +4,7 @@ class Node
   attr_reader :data # allow external entities to read value but not write
   attr_accessor :next # allow external entities to read or write next node
 
-  def initialize(value, next_node = nil)
+  def initialize(value, next_node=nil)
     @data = value
     @next = next_node
   end
@@ -21,7 +21,8 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def add_first(value)
-      raise NotImplementedError
+      new_node = Node.new(value)
+      @head = new_node
     end
 
     # method to find if the linked list contains a node with specified value
@@ -120,7 +121,10 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_first
-      raise NotImplementedError
+      return @head if @head.nil?
+
+      first_node = @head
+      return first_node.data
     end
 
     # method that inserts a given value as a new last node in the linked list
