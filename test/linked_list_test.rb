@@ -96,6 +96,11 @@ describe LinkedList do
             expect(@list.get_last).must_equal 4
             expect(@list.length).must_equal 3
         end
+
+        it "will return `nil` for `get_last` if the list is empty" do
+            # Act-Assert
+            expect(@list.get_last).must_be_nil
+        end
     end
 
     describe 'get_at_index' do
@@ -137,7 +142,7 @@ describe LinkedList do
             end
             @list.add_last(100)
             @list.add_first(-12)
-            
+
             # Act-Assert
             expect(@list.find_max).must_equal 100
             expect(@list.find_min).must_equal(-12)
@@ -172,7 +177,7 @@ describe LinkedList do
             expect(@list.get_last).must_equal 10
             expect(@list.find_max).must_equal 10
             expect(@list.find_min).must_equal 3
-            
+                        
             # Act (again)
             # delete last node
             @list.delete(10)
