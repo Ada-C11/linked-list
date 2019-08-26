@@ -18,8 +18,8 @@ class LinkedList
 
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity: O
+    # Space Complexity O
     def add_first(value)
       new_node = Node.new(value, @head)
       @head = new_node
@@ -27,8 +27,8 @@ class LinkedList
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity: O(n)
+    # Space Complexity: O
     def search(value)
       current = @head
 
@@ -44,8 +44,8 @@ class LinkedList
 
     # method to return the max value in the linked list
     # returns the data value and not the node
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O
     def find_max
       visited_node = @head
       return nil if visited_node == nil
@@ -63,8 +63,8 @@ class LinkedList
 
     # method to return the min value in the linked list
     # returns the data value and not the node
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O
     def find_min
       return nil if @head == nil
 
@@ -82,8 +82,8 @@ class LinkedList
 
 
     # method that returns the length of the singly linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity: O(n)
+    # Space Complexity: O
     def length
       count = 0
       current = @head
@@ -102,24 +102,56 @@ class LinkedList
     # method that returns the value at a given index in the linked list
     # index count starts at 0
     # returns nil if there are fewer nodes in the linked list than the index value
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O
     def get_at_index(index)
-      
+      current = @head
+
+      return nil if @head == nil
+      count = 0
+
+      while count < index && current.next != nil
+        current = current.next
+        count += 1
+      end
+
+      return current.data
     end
 
     # method to print all the values in the linked list
     # Time Complexity:  
     # Space Complexity
     def visit
-      raise NotImplementedError
+      current = @head
+      
+      while current.next != nil
+        puts @current.data
+        current = current.next
+      end
+      # for last node
+      puts current.data
     end
 
     # method to delete the first node found with specified value
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity: O(n)
+    # Space Complexity O
     def delete(value)
-      raise NotImplementedError
+      current = @head
+      unless current
+        return 0
+      end
+
+      # if head node has the value to delete
+      if current.data == value
+        @head = current.next
+      end
+
+      while current.next != nil
+        if current.next.data == value
+          current.next = current.next.next
+        end
+        current = current.next
+      end
     end
 
     # method to reverse the singly linked list
@@ -173,17 +205,15 @@ class LinkedList
     # Time Complexity:O(n)
     # Space Complexity
     def add_last(value)
+      last_node = Node.new(value)
       current = @head
-      count = 0
-    
-      if current == nil 
-        new_node = Node.new(value)
-        @head = new_node
+
+      if @head == nil
+        @head = last_node
       else
         while current.next != nil
           current = current.next
         end
-        last_node = Node.new(value)
         current.next = last_node
       end
     end
@@ -193,7 +223,16 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_last
-      raise NotImplementedError
+      count = 0
+      current = @head
+      if !current
+        return nil
+      end
+
+      while current.next != nil
+        current = current.next
+      end
+      return current.data
     end
 
     # method to insert a new node with specific data value, assuming the linked
