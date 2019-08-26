@@ -1,3 +1,4 @@
+require 'pry'
 
 # Defines a node in the singly linked list
 class Node
@@ -14,46 +15,82 @@ end
 class LinkedList
     def initialize
       @head = nil # keep the head private. Not accessible outside this class
+      @tail = nil
     end
 
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity: O(1) constant - because you are only redirecting the head to the new node.
+    # Space Complexity: 
     def add_first(value)
-      raise NotImplementedError
+      new_node = Node.new(value, @head)
+
+      if !@head
+        @tail = new_node
+      end
+      @head = new_node
+      # current = @head
+      # while current.next
+      #   current = current.next
+      # end
+      # @tail = current
+
+      print @head.data
     end
 
-    # method to find if the linked list contains a node with specified value
-    # returns true if found, false otherwise
+    # Additional Exercises 
+    # returns the value in the first node
+    # returns nil if the list is empty
     # Time Complexity:  
     # Space Complexity
-    def search(value)
-      raise NotImplementedError
+    def get_first
+      if @head
+        return @head.data
+      end
     end
-
-    # method to return the max value in the linked list
-    # returns the data value and not the node
-    # Time Complexity:  
-    # Space Complexity
-    def find_max
-      raise NotImplementedError
-    end
-
-    # method to return the min value in the linked list
-    # returns the data value and not the node
-    # Time Complexity:  
-    # Space Complexity
-    def find_min
-      raise NotImplementedError
-    end
-
 
     # method that returns the length of the singly linked list
     # Time Complexity:  
     # Space Complexity
     def length
-      raise NotImplementedError
+      current = @head
+      length = 0
+
+      while current
+        length += 1
+        current = current.next
+      end
+
+      return length
+    end
+
+    # method that inserts a given value as a new last node in the linked list
+    # Time Complexity:  
+    # Space Complexity
+    def add_last(value)
+      new_node = Node.new(value)
+      @tail = new_node
+      
+      if !@head
+        @head = new_node
+      else 
+        current = @head 
+        while current.next
+          current = current.next
+        end      
+        current.next = @tail
+      end
+    end
+
+    # method that returns the value of the last node in the linked list
+    # returns nil if the linked list is empty
+    # Time Complexity:  
+    # Space Complexity
+    def get_last
+      if !@head
+        return nil
+      end
+      return @tail.data
     end
 
     # method that returns the value at a given index in the linked list
@@ -62,21 +99,110 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_at_index(index)
-      raise NotImplementedError
+      current = @head
+
+      if current
+        index.times do 
+          current = current.next
+        end
+        return current.data
+      else
+        return nil
+      end
+    end
+
+    # method to return the max value in the linked list
+    # returns the data value and not the node
+    # Time Complexity:  
+    # Space Complexity
+    def find_max
+      if @head
+        current = @head
+        max = 0
+        while current
+          current.data > max ? max = current.data : current = current.next
+        end
+        return max
+      else
+        return nil
+      end
+    end
+
+    # method to return the min value in the linked list
+    # returns the data value and not the node
+    # Time Complexity:  
+    # Space Complexity
+    def find_min
+      if @head
+        current = @head
+        min = @head.data
+        while current
+          current.data < min ? min = current.data : current = current.next
+        end
+        return min
+      else
+        return nil
+      end
+    end
+
+    # method to delete the first node found with specified value
+    # Time Complexity:  
+    # Space Complexity
+    # CHRIS - this isn't working! I'm pretty sure this is because it's not updating tail, bu
+    def delete(value) 
+      if @head == nil
+        return
+      end
+      current = @head
+
+      if value == current.data
+        @head = current.next
+        return
+      end
+
+      while current.next
+        if current.next.data == value
+          if current.next == @tail
+            @tail = current
+            current.next = nil
+            return
+          else
+            current.next = current.next.next
+            return
+          end
+        end
+        current = current.next
+      end
+    end
+
+    # method to find if the linked list contains a node with specified value
+    # returns true if found, false otherwise
+    # Time Complexity:  
+    # Space Complexity
+    def search(value)
+      current = @head
+
+      while current
+        if current.data == value
+          return true
+        end
+        current = current.next
+      end
+      return false
     end
 
     # method to print all the values in the linked list
     # Time Complexity:  
     # Space Complexity
     def visit
-      raise NotImplementedError
-    end
+      return if !@head
 
-    # method to delete the first node found with specified value
-    # Time Complexity:  
-    # Space Complexity
-    def delete(value)
-      raise NotImplementedError
+      current = @head
+      while current
+        puts "#{current.data}"
+        current = current.next
+      end
+
     end
 
     # method to reverse the singly linked list
@@ -84,9 +210,18 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def reverse
-      raise NotImplementedError
-    end
+      return if !@head || !@head.next
+      
+      count = self.length
+      current = @head
+      index = count - 1
 
+      count.times do
+        temp = self.get_at_index(index)
+        self.delete(temp)
+        self.add_first(temp)
+      end
+    end
 
     ## Advanced Exercises
     # returns the value at the middle element in the singly linked list
@@ -101,7 +236,11 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_nth_from_end(n)
-      raise NotImplementedError
+      return if !@head
+      return @head.data if n == 0
+      return @tail.data if n == 1
+
+      binding.pry
     end
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
@@ -110,31 +249,6 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def has_cycle
-      raise NotImplementedError
-    end
-
-
-    # Additional Exercises 
-    # returns the value in the first node
-    # returns nil if the list is empty
-    # Time Complexity:  
-    # Space Complexity
-    def get_first
-      raise NotImplementedError
-    end
-
-    # method that inserts a given value as a new last node in the linked list
-    # Time Complexity:  
-    # Space Complexity
-    def add_last(value)
-      raise NotImplementedError
-    end
-
-    # method that returns the value of the last node in the linked list
-    # returns nil if the linked list is empty
-    # Time Complexity:  
-    # Space Complexity
-    def get_last
       raise NotImplementedError
     end
 
