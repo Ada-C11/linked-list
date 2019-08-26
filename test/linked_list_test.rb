@@ -277,4 +277,34 @@ describe LinkedList do
       expect(@list.has_cycle).must_equal false
     end
   end
+
+  describe "insert_ascending" do
+    it "it inserts a value into sorted list in the correct spot" do
+      @list.add_first(1)
+      @list.add_last(3)
+
+      @list.insert_ascending(2)
+
+      expect(@list.get_at_index(1)).must_equal 2
+    end
+
+    it "inserts a value into the beginning of the list if it's smaller than anything in the current list" do
+      @list.add_first(4)
+      @list.insert_ascending(3)
+
+      expect(@list.get_at_index(0)).must_equal 3
+      expect(@list.get_at_index(1)).must_equal 4
+    end
+  end
+
+  describe "search" do
+    it "finds a value in the list" do
+      @list.add_first(3)
+      @list.add_first(5)
+      @list.add_first(6)
+      @list.add_first(8)
+
+      expect(@list.search(6)).must_equal true
+    end
+  end
 end

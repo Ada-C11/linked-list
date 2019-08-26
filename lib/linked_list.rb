@@ -27,10 +27,17 @@ class LinkedList
 
   # method to find if the linked list contains a node with specified value
   # returns true if found, false otherwise
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n), where n is the number of nodes in the list
+  # Space Complexity: O(1)
   def search(value)
-    raise NotImplementedError
+    current = @head
+    until !current
+      if current.data == value
+        return true
+      end
+      current = current.next
+    end
+    return false
   end
 
   # method to return the max value in the linked list
@@ -111,10 +118,18 @@ class LinkedList
   end
 
   # method to print all the values in the linked list
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n), where n is the number of nodes in the list
+  # Space Complexity: O(1)
   def visit
-    raise NotImplementedError
+    current = @head
+    if !current
+      puts "empty"
+    else
+      until !current
+        puts current.value
+        current = current.next
+      end
+    end
   end
 
   # method to delete the first node found with specified value
@@ -210,8 +225,8 @@ class LinkedList
   # Additional Exercises
   # returns the value in the first node
   # returns nil if the list is empty
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(1)
+  # Space Complexity: O(1)
   def get_first
     node = @head
     if node == nil
@@ -222,8 +237,8 @@ class LinkedList
   end
 
   # method that inserts a given value as a new last node in the linked list
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n), where n is the number of nodes in the list
+  # Space Complexity: O(1)
   def add_last(value)
     temp_node = @head
     new_node = Node.new(value)
@@ -239,8 +254,8 @@ class LinkedList
 
   # method that returns the value of the last node in the linked list
   # returns nil if the linked list is empty
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n), where n is the number of nodes in the list
+  # Space Complexity: O(1)
   def get_last
     temp_node = @head
     until temp_node.next == nil
@@ -251,10 +266,28 @@ class LinkedList
 
   # method to insert a new node with specific data value, assuming the linked
   # list is sorted in ascending order
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n), where n is the number of nodes in the list
+  # Space Complexity: O(1)
   def insert_ascending(value)
-    raise NotImplementedError
+    new_node = Node.new(value)
+    current = @head
+    if !current
+      @head = new_node
+      return
+    end
+
+    if current.data > new_node.data
+      new_node.next = current
+      @head = new_node
+      return
+    end
+
+    until !current.next || current.next.data >= new_node.data
+      current = current.next
+    end
+    new_node.next = current.next
+    current.next = new_node
+    return
   end
 
   # Helper method for tests
