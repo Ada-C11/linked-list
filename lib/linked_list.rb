@@ -21,7 +21,6 @@ class LinkedList
   # Time Complexity:  O(1), because this method doesn't require any traversal
   # Space Complexity:  O(1), because this will always result in the same number of additional nodes
   def add_first(value)
-    # raise NotImplementedError
     new_node = Node.new(value, nil)
 
     new_node.next = @head
