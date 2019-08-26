@@ -35,7 +35,12 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def search(value)
-      raise NotImplementedError
+      curr = @head
+      while curr
+        return true if curr.data == value
+        curr = curr.next
+      end
+      return false
     end
 
     # method to return the max value in the linked list
@@ -152,9 +157,19 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def reverse
-      raise NotImplementedError
+      curr = @head
+      reverse_links(curr)
     end
 
+    def reverse_links(curr)
+      if !curr.next
+        @head = curr
+        return
+      end
+      reverse_links(curr.next)
+      curr.next.next = curr
+      curr.next = nil
+    end
 
     ## Advanced Exercises
     # returns the value at the middle element in the singly linked list

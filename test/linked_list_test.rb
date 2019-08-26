@@ -220,22 +220,48 @@ describe LinkedList do
         end
     end
 
-#     describe "reverse" do
-#         it 'can retrieve an item at index n from the end in the list' do
-#             # Arrange
-#             @list.add_first(4)
-#             @list.add_first(3)
-#             @list.add_first(2)
-#             @list.add_first(1)
+    describe "reverse" do
+        it 'can retrieve an item at index n from the end in the list' do
+            # Arrange
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
             
-#             # Act
-#             @list.reverse
+            # Act
+            @list.reverse
 
-#             # Assert
-#             expect(@list.find_nth_from_end(0)).must_equal 1
-#             expect(@list.find_nth_from_end(1)).must_equal 2
-#             expect(@list.find_nth_from_end(2)).must_equal 3
-#             expect(@list.find_nth_from_end(3)).must_equal 4
-#         end
-#     end
+            # Assert
+            expect(@list.find_nth_from_end(0)).must_equal 1
+            expect(@list.find_nth_from_end(1)).must_equal 2
+            expect(@list.find_nth_from_end(2)).must_equal 3
+            expect(@list.find_nth_from_end(3)).must_equal 4
+        end
+    end
+
+    describe "search" do 
+        it "will return false if list is empty" do 
+            expect(@list.search(20)).must_equal false
+        end
+
+        it "will return false if value is not in list" do 
+
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            
+            expect(@list.search(20)).must_equal false
+        end
+
+        it "will return true if value is found" do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            
+            expect(@list.search(2)).must_equal true
+        end
+
+    end
 end
