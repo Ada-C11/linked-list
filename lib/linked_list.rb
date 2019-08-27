@@ -149,35 +149,16 @@ class LinkedList
   # Time Complexity:
   # Space Complexity
   def reverse
-    # get j to last node and i to second-to-last node
-    # i = 0
-    # j = 1
-    # current = @head
-    # after_current = @head.next
-    # until j == self.length - 1
-    #   current = current.next
-    #   after_current = after_current.next
-    #   i += 1
-    #   j += 1
-    # end
-
-    # until i == 0
-    #   after_current.next = current
-    # end
-    # reversed_list = LinkedList.new
-    # self.length.times do
-    #   i = self.length - 1
-    #   until
-    # end
-    a = @head
-    b = @head.next
-    i = 1
-    until i == self.length - 2
-      b.next = a
-      a = a.next
-      b = a.next.next
-      i += 1
+    previous = nil
+    current = @head
+    after = @head.next
+    while current != nil
+      after = current.next
+      current.next = previous 
+      previous = current
+      current = after
     end
+    @head = previous
   end
 
   ## Advanced Exercises
