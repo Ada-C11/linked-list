@@ -292,6 +292,7 @@ class LinkedList
           current_node.next.next = holder
         else
           current_node = current_node.next
+        end
       end
     end
   end

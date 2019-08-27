@@ -181,11 +181,11 @@ describe LinkedList do
             # delete last node
             @list.delete(10)
             # Assert
-            # expect(@list.get_first).must_equal 3
-            # expect(@list.length).must_equal 3
-            # expect(@list.get_last).must_equal 9
-            # expect(@list.find_max).must_equal 9
-            # expect(@list.find_min).must_equal 3
+            expect(@list.get_first).must_equal 3
+            expect(@list.length).must_equal 3
+            expect(@list.get_last).must_equal 9
+            expect(@list.find_max).must_equal 9
+            expect(@list.find_min).must_equal 3
 
             # delete fist node (requires updating head)
             @list.delete(4)
