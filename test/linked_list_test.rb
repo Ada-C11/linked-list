@@ -15,7 +15,6 @@ describe LinkedList do
 
     describe 'initialize' do
         it 'can be created' do
-
             # Assert
             expect(@list).must_be_kind_of LinkedList
         end
