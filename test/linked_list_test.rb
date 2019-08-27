@@ -50,6 +50,30 @@ describe LinkedList do
     end
   end
 
+  describe "search" do
+    it "will return false for an empty list" do
+      expect(@list.search(1)).must_equal false
+    end
+
+    it "will return true for a value in the list" do
+      @list.add_first(1)
+      @list.add_first(2)
+      @list.add_first(3)
+      @list.add_first(4)
+
+      expect(@list.search(4)).must_equal true
+    end
+
+    it "will return false for a value that isn't in the list" do
+      @list.add_first(1)
+      @list.add_first(2)
+      @list.add_first(3)
+      @list.add_first(4)
+
+      expect(@list.search(7)).must_equal false
+    end
+  end
+
   describe "length" do
     it "will return 0 for an empty list" do
       # Act-Assert
@@ -220,21 +244,21 @@ describe LinkedList do
   end
 
   describe "reverse" do
-      it 'can retrieve an item at index n from the end in the list' do
-          # Arrange
-          @list.add_first(4)
-          @list.add_first(3)
-          @list.add_first(2)
-          @list.add_first(1)
+    it "can retrieve an item at index n from the end in the list" do
+      # Arrange
+      @list.add_first(4)
+      @list.add_first(3)
+      @list.add_first(2)
+      @list.add_first(1)
 
-          # Act
-          @list.reverse
+      # Act
+      @list.reverse
 
-          # Assert
-          expect(@list.find_nth_from_end(0)).must_equal 1
-          expect(@list.find_nth_from_end(1)).must_equal 2
-          expect(@list.find_nth_from_end(2)).must_equal 3
-          expect(@list.find_nth_from_end(3)).must_equal 4
-      end
+      # Assert
+      expect(@list.find_nth_from_end(0)).must_equal 1
+      expect(@list.find_nth_from_end(1)).must_equal 2
+      expect(@list.find_nth_from_end(2)).must_equal 3
+      expect(@list.find_nth_from_end(3)).must_equal 4
+    end
   end
 end
