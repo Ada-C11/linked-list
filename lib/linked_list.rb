@@ -14,6 +14,7 @@ end
 class LinkedList
     def initialize
       @head = nil # keep the head private. Not accessible outside this class
+      @tail = nil
     end
 
     # method to add a new node with the specific data value in the linked list
@@ -21,8 +22,10 @@ class LinkedList
     # Time Complexity: O(1) 
     # Space Complexity: O(1) 
     def add_first(value)
+      new_node = Node.new(value)
       if !@head 
-        @head = Node.new(value)
+        @head = new_node
+        @tail = new_node
       else 
         new_node = Node.new(value)
         new_node.next = @head
@@ -156,6 +159,7 @@ class LinkedList
       temp = node.next 
       node.next = node.next.next
       temp.next = nil
+      @tail = node if !node.next
     end
 
     # method to reverse the singly linked list
@@ -234,33 +238,25 @@ class LinkedList
     # Time Complexity:  O(n) where n is the number of nodes
     # Space Complexity: O(1) 
     def add_last(value)
-      last = get_last_node()
       new_node = Node.new(value)
-      if last
-        last.next = new_node
+      if @tail
+        @tail.next = new_node
+        @tail = new_node
       else 
         @head = new_node
+        @tail = new_node
       end
       return true
     end
 
-    def get_last_node
-      return if !@head
-      curr = @head
-      while curr.next
-        curr = curr.next
-      end
-      return curr
-    end
 
     # method that returns the value of the last node in the linked list
     # returns nil if the linked list is empty
     # Time Complexity:  O(n) where n is the number of nodes
     # Space Complexity: O(1) 
     def get_last
-      last_node = get_last_node()
-      return last_node.data if last_node
-      return
+      return if !@tail
+      return @tail.data
     end
 
     # method to insert a new node with specific data value, assuming the linked
@@ -272,6 +268,7 @@ class LinkedList
       if !@head || value <= @head.data
         new_node.next = @head 
         @head = new_node
+        @tail = new_node
         return
       end
       curr = @head 
@@ -279,6 +276,7 @@ class LinkedList
         curr = curr.next
       end
       temp = curr.next
+      @tail = new_node if !curr.next
       curr.next =  new_node
       new_node.next = temp
     end
