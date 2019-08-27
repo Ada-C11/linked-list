@@ -7,19 +7,13 @@ require_relative 'test_helper'
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-describe LinkedList do
+
+describe DoublyLinkedList do
     # Arrange
     before do
-        @list = LinkedList.new
+        @list = DoublyLinkedList.new
     end
 
-    describe 'initialize' do
-        it 'can be created' do
-
-            # Assert
-            expect(@list).must_be_kind_of LinkedList
-        end
-    end
 
     describe 'add_first & get_first' do
         it 'can add values to an empty list' do
@@ -51,24 +45,6 @@ describe LinkedList do
         end
     end
 
-    describe "length" do
-        it "will return 0 for an empty list" do
-            # Act-Assert
-            expect(@list.length).must_equal 0
-        end
-
-        it "will return the length for nonempty lists" do
-            # Arrange
-            count = 0
-            while count < 5
-                @list.add_first(count)
-                count += 1
-                # Act-Assert
-                expect(@list.length).must_equal count
-            end
-        end
-    end
-
     describe "addLast & getLast" do
         it "will add to the front if the list is empty" do
             # Arrange
@@ -96,11 +72,6 @@ describe LinkedList do
             expect(@list.get_last).must_equal 4
             expect(@list.length).must_equal 3
         end
-        
-        it "will return `nil` for `get_last` if the list is empty" do
-            # Act-Assert
-            expect(@list.get_last).must_be_nil
-        end
     end
 
     describe 'get_at_index' do
@@ -121,31 +92,6 @@ describe LinkedList do
             expect(@list.get_at_index(1)).must_equal 3
             expect(@list.get_at_index(2)).must_equal 2
             expect(@list.get_at_index(3)).must_equal 1
-        end
-    end
-
-    describe 'max and min values' do
-        it 'returns nil if the list is empty' do
-            # Act-Assert
-            expect(@list.find_max()).must_be_nil
-            expect(@list.find_min()).must_be_nil
-        end
-
-        it 'can retrieve the max and min values in the list' do
-            # Arrange
-            count = 0
-            while count < 5
-                @list.add_first(count)
-                expect(@list.find_max).must_equal count
-                expect(@list.find_min).must_equal 0
-                count += 1
-            end
-            @list.add_last(100)
-            @list.add_first(-12)
-            
-            # Act-Assert
-            expect(@list.find_max).must_equal 100
-            expect(@list.find_min).must_equal(-12)
         end
     end
 
@@ -258,36 +204,4 @@ describe LinkedList do
         end
     end
 
-    describe "has cycle" do
-        it "detects if the linked list contains a cycle" do
-            # Arrange
-            @list.add_first(5)
-            @list.add_first(3)
-            @list.add_first(2)
-            @list.add_first(1)
-
-            # Assert
-            expect(@list.has_cycle).must_equal false
-            
-            # Act
-            @list.create_cycle
-
-            # Assert
-            expect(@list.has_cycle).must_equal true
-        end
-    end
-
-    describe "find middle value" do
-        it "finds the middle value" do
-            # Arrange
-            @list.add_first(5)
-            @list.add_first(4)
-            @list.add_first(3)
-            @list.add_first(2)
-            @list.add_first(1)
-
-            # Assert
-            expect(@list.find_middle_value).must_equal 3
-        end
-    end
 end
