@@ -61,6 +61,7 @@ class LinkedList
       if current.data > max
         max = current.data
       end
+      current = current.next
     end
 
     return max
@@ -83,6 +84,7 @@ class LinkedList
       if current.data < min
         min = current.data
       end
+      current = current.next
     end
 
     return min
@@ -132,14 +134,16 @@ class LinkedList
   end
 
   # method to delete the first node found with specified value
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n) where n is the length of the linke list
+  # Space Complexity: O(1)
   def delete(value)
     current = @head
-    last = current
+    last = nil
 
     if current == nil
       return nil
+    elsif value == current.data
+      @head = current.next
     end
 
     while current.next != nil
@@ -153,26 +157,60 @@ class LinkedList
 
   # method to reverse the singly linked list
   # note: the nodes should be moved and not just the values in the nodes
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n) where n is the length of the linked list
+  # Space Complexity: O(1)
   def reverse
-    raise NotImplementedError
+    current = @head
+    last_node = nil
+    next_node = current.next
+
+    if current == nil
+      return nil
+    end
+
+    while current.next != nil
+      current.next = last_node
+      last_node = current
+      current = next_node
+      next_node = current.next
+    end
+
+    current.next = last_node
+    @head = current
+    return @head.data
   end
 
   ## Advanced Exercises
   # returns the value at the middle element in the singly linked list
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n) where n is the length of the linked list
+  # Space Complexity: O(1)
   def find_middle_value
-    raise NotImplementedError
+    slow = @head
+    fast = @head
+
+    if @head == nil
+      return nil
+    end
+
+    while fast != nil && fast.next != nil
+      fast = fast.next.next
+      slow = slow.next
+    end
+    return slow
   end
 
   # find the nth node from the end and return its value
   # assume indexing starts at 0 while counting to n
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n) where n is the length of the linked list
+  # Space Complexity: O(1)
   def find_nth_from_end(n)
-    raise NotImplementedError
+    i = self.length - n - 1
+
+    if i > self.length - 1
+      return nil
+    else
+      return self.get_at_index(i)
+    end
   end
 
   # checks if the linked list has a cycle. A cycle exists if any node in the
@@ -203,6 +241,11 @@ class LinkedList
   def add_last(value)
     current = @head
     new_node = Node.new(value, nil)
+
+    if current == nil
+      @head = new_node
+      return @head
+    end
 
     while current.next != nil
       current = current.next

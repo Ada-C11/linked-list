@@ -118,30 +118,30 @@ describe LinkedList do
     end
   end
 
-  # describe 'max and min values' do
-  #     it 'returns nil if the list is empty' do
-  #         # Act-Assert
-  #         expect(@list.find_max()).must_be_nil
-  #         expect(@list.find_min()).must_be_nil
-  #     end
+  describe "max and min values" do
+    it "returns nil if the list is empty" do
+      # Act-Assert
+      expect(@list.find_max()).must_be_nil
+      expect(@list.find_min()).must_be_nil
+    end
 
-  #     it 'can retrieve the max and min values in the list' do
-  #         # Arrange
-  #         count = 0
-  #         while count < 5
-  #             @list.add_first(count)
-  #             expect(@list.find_max).must_equal count
-  #             expect(@list.find_min).must_equal 0
-  #             count += 1
-  #         end
-  #         @list.add_last(100)
-  #         @list.add_first(-12)
+    it "can retrieve the max and min values in the list" do
+      # Arrange
+      count = 0
+      while count < 5
+        @list.add_first(count)
+        expect(@list.find_max).must_equal count
+        expect(@list.find_min).must_equal 0
+        count += 1
+      end
+      @list.add_last(100)
+      @list.add_first(-12)
 
-  #         # Act-Assert
-  #         expect(@list.find_max).must_equal 100
-  #         expect(@list.find_min).must_equal(-12)
-  #     end
-  # end
+      # Act-Assert
+      expect(@list.find_max).must_equal 100
+      expect(@list.find_min).must_equal(-12)
+    end
+  end
 
   describe "delete" do
     it "delete from empty linked list is a no-op" do
