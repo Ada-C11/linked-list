@@ -32,8 +32,8 @@ class LinkedList
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the number of nodes
+    # Space Complexity: O(1) 
     def search(value)
       curr = @head
       while curr
