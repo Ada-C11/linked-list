@@ -337,6 +337,7 @@ describe LinkedList do
 
     describe "insert_ascending(value)" do 
         it "will add to list if list is empty" do 
+            expect(@list.length).must_equal 0
             @list.insert_ascending(5)
             expect(@list.length).must_equal 1
             expect(@list.get_first()).must_equal 5
@@ -346,6 +347,7 @@ describe LinkedList do
             @list.add_first(4)
             @list.add_first(3)
             @list.add_first(2)
+            expect(@list.length).must_equal 3
             @list.insert_ascending(1)
             expect(@list.length).must_equal 4
             expect(@list.get_first()).must_equal 1

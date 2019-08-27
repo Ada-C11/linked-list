@@ -15,6 +15,7 @@ class LinkedList
     def initialize
       @head = nil # keep the head private. Not accessible outside this class
       @tail = nil
+      @length = 0
     end
 
     # method to add a new node with the specific data value in the linked list
@@ -31,6 +32,8 @@ class LinkedList
         new_node.next = @head
         @head = new_node
       end
+      @length += 1
+      return
     end
 
     # method to find if the linked list contains a node with specified value
@@ -82,16 +85,17 @@ class LinkedList
 
 
     # method that returns the length of the singly linked list
-    # Time Complexity:  O(n) where n is the number of nodes
+    # Time Complexity:  O(1) (was O(n) updated class to keep track on length)
     # Space Complexity: O(1) 
     def length
-      count = 0
-      curr = @head
-      while curr && @head
-        curr = curr.next
-        count += 1
-      end
-      return count
+      # count = 0
+      # curr = @head
+      # while curr && @head
+      #   curr = curr.next
+      #   count += 1
+      # end
+      # return count
+      return @length
     end
 
     # method that returns the value at a given index in the linked list
@@ -147,6 +151,8 @@ class LinkedList
           end
         end
       end
+      @length -= 1
+      return 
     end
 
     def delete_first_node
@@ -179,6 +185,7 @@ class LinkedList
       reverse_links(curr.next)
       curr.next.next = curr
       curr.next = nil
+      return 
     end
 
     ## Advanced Exercises
@@ -235,7 +242,7 @@ class LinkedList
     end
 
     # method that inserts a given value as a new last node in the linked list
-    # Time Complexity:  O(n) where n is the number of nodes
+    # Time Complexity:  O(1)
     # Space Complexity: O(1) 
     def add_last(value)
       new_node = Node.new(value)
@@ -246,13 +253,14 @@ class LinkedList
         @head = new_node
         @tail = new_node
       end
-      return true
+      @length += 1
+      return 
     end
 
 
     # method that returns the value of the last node in the linked list
     # returns nil if the linked list is empty
-    # Time Complexity:  O(n) where n is the number of nodes
+    # Time Complexity:  O(1)
     # Space Complexity: O(1) 
     def get_last
       return if !@tail
@@ -269,6 +277,7 @@ class LinkedList
         new_node.next = @head 
         @head = new_node
         @tail = new_node
+        @length += 1
         return
       end
       curr = @head 
@@ -279,6 +288,8 @@ class LinkedList
       @tail = new_node if !curr.next
       curr.next =  new_node
       new_node.next = temp
+      @length += 1
+      return 
     end
 
     # Helper method for tests
