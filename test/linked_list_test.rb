@@ -238,4 +238,133 @@ describe LinkedList do
             expect(@list.find_nth_from_end(3)).must_equal 4
         end
     end
+
+    describe "search" do 
+        it "will return false if list is empty" do 
+            expect(@list.search(20)).must_equal false
+        end
+
+        it "will return false if value is not in list" do 
+
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            
+            expect(@list.search(20)).must_equal false
+        end
+
+        it "will return true if value is found" do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            
+            expect(@list.search(2)).must_equal true
+            expect(@list.search(3)).must_equal true
+            expect(@list.search(1)).must_equal true
+            expect(@list.search(4)).must_equal true
+        end
+    end
+
+    describe "visit" do 
+        it "will return  empty string if list is empty" do 
+            expect(@list.visit).must_equal ""
+        end
+
+        it "will return all the values in order as a string" do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            expect(@list.visit).must_equal "1234"
+
+        end
+    end
+
+    describe "find_middle_value" do 
+        it "will return nil if list is empty" do 
+            expect(@list.find_middle_value).must_be_nil
+        end
+
+        it "will return the middle value if list length is odd" do 
+            @list.add_first(5)
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            expect(@list.find_middle_value).must_equal 3
+
+        end
+
+        it "will return the first value left of center if no middle value (ie list length is even)" do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            expect(@list.find_middle_value).must_equal 2
+        end
+    end
+
+    describe "has_cycle" do 
+        it "will return false if list is empty" do 
+            expect(@list.has_cycle).must_equal false
+        end
+
+        it "will return true if list has a cyle" do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            @list.create_cycle()
+            expect(@list.has_cycle).must_equal true
+        end
+
+        it "will return true if list is length one and has a cycle" do 
+            @list.add_first(4)
+            @list.create_cycle()
+            expect(@list.has_cycle).must_equal true
+        end
+        it "will return false if list does not have a cycle" do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+            expect(@list.has_cycle).must_equal false
+        end
+    end
+
+
+    describe "insert_ascending(value)" do 
+        it "will add to list if list is empty" do 
+            expect(@list.length).must_equal 0
+            @list.insert_ascending(5)
+            expect(@list.length).must_equal 1
+            expect(@list.get_first()).must_equal 5
+        end
+
+        it 'will add to front of list if less than all values' do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            expect(@list.length).must_equal 3
+            @list.insert_ascending(1)
+            expect(@list.length).must_equal 4
+            expect(@list.get_first()).must_equal 1
+
+        end
+
+        it "will add to back of list if greater than all values" do 
+            @list.add_first(4)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.insert_ascending(5)
+            expect(@list.length).must_equal 4
+            expect(@list.get_last()).must_equal 5
+        end
+
+        it "will add in middle in correct order" do 
+        end
+    end
+
 end
