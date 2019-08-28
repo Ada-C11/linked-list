@@ -173,7 +173,9 @@ class LinkedList
     # Time Complexity:  O(n)
     # Space Complexity: passing pointer not list to rec statck so O(n)
     def reverse
+      return if !@head
       curr = @head
+      @tail = curr
       reverse_links(curr)
     end
 
