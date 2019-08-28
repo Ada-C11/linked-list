@@ -21,8 +21,8 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def add_first(value)
-      node = Node.new()
-      node.next = @head
+      node = Node.new(value, @head)
+      # node.next = @head
       @head = node
     end
 
@@ -53,8 +53,8 @@ class LinkedList
       node = @head 
 
       until node == nil
-        if node.value > max
-          max = node.value
+        if node.data > max
+          max = node.data
         else
           node = node.next
         end
@@ -72,8 +72,8 @@ class LinkedList
       node = @head 
 
       until node == nil
-        if node.value < min
-          min = node.value
+        if node.data < min
+          min = node.data
         else
           node = node.next
         end
@@ -105,14 +105,15 @@ class LinkedList
     # Space Complexity
     def get_at_index(index)
       value = nil
-      i = 0
       node = @head
+      i = 0
 
-      return nil if node == nil
+      # return nil if node == nil
 
-      until i == (index + 1)
+      until node == nil
         if i == index
-          value = node.value
+          value = node.data
+          break
         end
         node = node.next
         i += 1
@@ -130,7 +131,7 @@ class LinkedList
       return nil if node == nil
 
       until node == nil
-        puts node.value
+        puts node.data
         node = node.next
       end
     end
@@ -143,10 +144,10 @@ class LinkedList
       delete = false
 
       until node == nil || delete == true
-        if node.value == value
+        if node.data == value
           @head = node.next
           delete = true
-        elsif node.next.value == value
+        elsif node.next.data == value
           node.next = node.next.next
           delete = true
         end
@@ -159,11 +160,11 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def reverse
-      node = @head
+      # node = @head
 
-      until node == nil
+      # until node == nil
         
-      end
+      # end
 
 
       raise NotImplementedError
