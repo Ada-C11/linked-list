@@ -226,7 +226,15 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_last
-      raise NotImplementedError
+      node = @head
+
+      return nil if node == nil
+
+      until node.next == nil
+        node = node.next
+      end
+
+      return node.data
     end
 
     # method to insert a new node with specific data value, assuming the linked
