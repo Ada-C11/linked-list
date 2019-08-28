@@ -206,8 +206,6 @@ class LinkedList
       node = @head 
 
       return node == nil ? nil : node.value
-      # return nil if node == nil
-      # return node.value
     end
 
     # method that inserts a given value as a new last node in the linked list
@@ -216,10 +214,11 @@ class LinkedList
     def add_last(value)
       node = @head 
 
-      return nil if node == nil
+      until node == nil
+        node = node.next
+      end
 
-
-      raise NotImplementedError
+      node = Node.new(value)
     end
 
     # method that returns the value of the last node in the linked list
