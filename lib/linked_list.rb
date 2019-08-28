@@ -127,33 +127,57 @@ class LinkedList
   end
 
   # method to print all the values in the linked list
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n) where n is the length of the linked list
+  # Space Complexity: O(1)
   def visit
-    raise NotImplementedError
+    current = @head
+    if !current
+      puts "no values"
+    else
+      while current != nil
+        puts current.value
+        current = current.next
+      end
+    end
   end
 
   # method to delete the first node found with specified value
   # Time Complexity: O(n) where n is the length of the linke list
   # Space Complexity: O(1)
   def delete(value)
+    return if @head == nil
+
     current = @head
     last = nil
 
-    if current == nil
-      return nil
-    elsif value == current.data
-      @head = current.next
+    until current == nil
+      if value == current.data
+        if @head.data == value
+          @head = current.next
+        else
+          last.next = last.next.next
+        end
+      end
     end
 
-    while current.next != nil
-      if value == current.data
-        last.next = current.next
-      end
-      last = current
-      current = current.next
-    end
+    last = current
+    current = current.next
   end
+
+  # return if !@head
+
+  # previous = nil
+  # current = @head
+
+  # until !current
+  #   if current.data == value
+  #     @head.data == value ? @head = current.next : previous.next = current.next
+  #   end
+
+  #   previous = current
+  #   current = current.next
+  # end
+  # end
 
   # method to reverse the singly linked list
   # note: the nodes should be moved and not just the values in the nodes
@@ -204,22 +228,35 @@ class LinkedList
   # Time Complexity: O(n) where n is the length of the linked list
   # Space Complexity: O(1)
   def find_nth_from_end(n)
-    i = self.length - n - 1
+    return if self.length <= n
 
-    if i > self.length - 1
-      return nil
-    else
-      return self.get_at_index(i)
+    i = self.length - n - 1
+    current = @head
+
+    i.times do
+      current = current.next
     end
+
+    return current.data
   end
 
   # checks if the linked list has a cycle. A cycle exists if any node in the
   # linked list links to a node already visited.
   # returns true if a cycle is found, false otherwise.
-  # Time Complexity:
-  # Space Complexity
+  # Time Complexity: O(n) where n is the length of the linked list
+  # Space Complexity: O(1)
   def has_cycle
-    raise NotImplementedError
+    current = @head
+    visited = []
+
+    while current
+      if visited.include?(current)
+        return true
+      end
+      visited << current
+      current = current.next
+    end
+    return false
   end
 
   # Additional Exercises
