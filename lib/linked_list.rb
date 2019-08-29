@@ -248,7 +248,30 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def insert_ascending(value)
-      raise NotImplementedError
+      node = @head
+      
+      if node == nil
+        @head = Node.new(value)
+      elsif node.data > value
+        @head = Node.new(value, node)
+      else
+        while node.data < value
+          if node.next != nil
+            if node.next.data > value
+              connected_node = node.next
+              node.next = Node.new(value, connected_node)
+              break
+            end
+            node = node.next
+          else
+            node.next = Node.new(value)
+            break
+          end
+        end
+      end
+
+      
+
     end
 
     # Helper method for tests
