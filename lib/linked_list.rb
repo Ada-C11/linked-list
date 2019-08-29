@@ -205,7 +205,7 @@ class LinkedList
     def get_first
       node = @head 
 
-      return node == nil ? nil : node.value
+      return node == nil ? nil : node.data
     end
 
     # method that inserts a given value as a new last node in the linked list
