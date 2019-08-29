@@ -49,15 +49,16 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_max
-      max = nil
       node = @head 
+
+      return nil if node == nil
+      max = node.data
 
       until node == nil
         if node.data > max
           max = node.data
-        else
-          node = node.next
         end
+          node = node.next
       end
 
       return max
@@ -68,15 +69,16 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_min
-      min = nil
       node = @head 
+
+      return nil if node == nil
+      min = node.data
 
       until node == nil
         if node.data < min
           min = node.data
-        else
-          node = node.next
         end
+          node = node.next
       end
 
       return min
@@ -214,11 +216,15 @@ class LinkedList
     def add_last(value)
       node = @head 
 
-      until node == nil
-        node = node.next
+      if node == nil
+        @head = Node.new(value)
+      else
+        until node.next == nil
+          node = node.next
+        end 
+  
+        node.next = Node.new(value)
       end
-
-      node = Node.new(value)
     end
 
     # method that returns the value of the last node in the linked list
