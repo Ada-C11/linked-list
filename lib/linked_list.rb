@@ -170,8 +170,8 @@ class LinkedList
 
     ## Advanced Exercises
     # returns the value at the middle element in the singly linked list
-    # Time Complexity:
-    # Space Complexity
+    # Time Complexity: O(2n) -> O(n)
+    # Space Complexity: O(1)
     def find_middle_value
       return nil if !@head
 
