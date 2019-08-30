@@ -135,12 +135,12 @@ describe LinkedList do
                 expect(@list.find_min).must_equal 0
                 count += 1
             end
-            # @list.add_last(100)
-            # @list.add_first(-12)
+            @list.add_last(100)
+            @list.add_first(-12)
             
-            # # Act-Assert
-            # expect(@list.find_max).must_equal 100
-            # expect(@list.find_min).must_equal(-12)
+            # Act-Assert
+            expect(@list.find_max).must_equal 100
+            expect(@list.find_min).must_equal(-12)
         end
     end
 

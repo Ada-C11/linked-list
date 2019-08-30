@@ -83,7 +83,6 @@ class LinkedList
       until current.nil?
         current = current.next
         length += 1
-
       end
       return length
       
@@ -92,33 +91,42 @@ class LinkedList
     # method that returns the value at a given index in the linked list
     # index count starts at 0
     # returns nil if there are fewer nodes in the linked list than the index value
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O(1)
     def get_at_index(index)
       return nil if length <= index
       current = @head
       count = 0
       until current.nil?
-        puts current.data
-
-        return current.data if count = index
+        return current.data if count == index
         current = current.next
         count += 1
       end
     end
 
     # method to print all the values in the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O(1)
     def visit
-      raise NotImplementedError
+      current = @head
+      until current.nil?
+        puts current.data
+        current = current.next
+      end
     end
 
     # method to delete the first node found with specified value
     # Time Complexity:  
     # Space Complexity
     def delete(value)
-      raise NotImplementedError
+      return if @head.nil?
+      current = @head
+      until current.nil?
+        if current.data == value 
+          current = current.next.next
+        end
+        current = current.next
+      end
     end
 
     # method to reverse the singly linked list
@@ -162,14 +170,27 @@ class LinkedList
     # Time Complexity: O(1)
     # Space Complexity: O(1)
     def get_first
+      return nil if @head.nil?
       return @head.data
     end
 
     # method that inserts a given value as a new last node in the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n) where n is the number of nodes
+    # Space Complexity: O(1)
     def add_last(value)
-      raise NotImplementedError
+      new_node = Node.new(value)
+      if @head.nil?
+        @head = new_node
+        return
+      end
+      current = @head
+      while current
+        if current.next.nil?
+          current.next = new_node
+          return
+        end
+        current = current.next
+      end
     end
 
     # method that returns the value of the last node in the linked list
@@ -177,7 +198,12 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_last
-      raise NotImplementedError
+      return nil if @head.nil?
+      current = @head
+      until current.nil?
+        current = current.next
+      end
+      return current
     end
 
     # method to insert a new node with specific data value, assuming the linked
