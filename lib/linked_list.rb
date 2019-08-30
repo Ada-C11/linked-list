@@ -173,8 +173,18 @@ class LinkedList
     # Time Complexity:
     # Space Complexity
     def find_middle_value
+      return nil if !@head
 
-      raise NotImplementedError
+      node = @head 
+
+      length = self.length - 1
+      length = (length / 2.0).ceil
+
+      length.times do 
+        node = node.next
+      end
+
+      return node.data
     end
 
     # find the nth node from the end and return its value
