@@ -199,10 +199,20 @@ class LinkedList
     # checks if the linked list has a cycle. A cycle exists if any node in the
     # linked list links to a node already visited.
     # returns true if a cycle is found, false otherwise.
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O(1)
     def has_cycle
-      raise NotImplementedError
+      return nil if @head.nil?
+      slow_p = @head
+      fast_p = @head
+      while slow_p != nil && fast_p != nil and fast_p.next != nil
+        slow_p = slow_p.next
+        fast_p = fast_p.next.next
+        if slow_p == fast_p
+          return true
+        end
+        return false
+      end
     end
 
 
