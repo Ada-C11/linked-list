@@ -28,7 +28,7 @@ class LinkedList
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
-    # Time Complexity:O(n)
+    # Time Complexity: O(n)
     # Space Complexity: O(1)
     def search(value)
       return false if @head.nil?
@@ -160,10 +160,23 @@ class LinkedList
 
     ## Advanced Exercises
     # returns the value at the middle element in the singly linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O(1)
     def find_middle_value
-      raise NotImplementedError
+      return nil if @head.nil?
+      current = @head
+      if length % 2 == 0
+        return nil
+      else
+        middle_index = length / 2
+      end
+      index = 0
+      until current.nil?
+        return current.data if index == middle_index
+        current = current.next
+        index += 1
+      end
+
     end
 
     # find the nth node from the end and return its value
