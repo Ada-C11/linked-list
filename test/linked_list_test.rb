@@ -43,6 +43,8 @@ describe LinkedList do
 
             # Assert
             expect(@list.get_first).must_equal 3
+            expect(@list.search(3)).must_equal true
+            expect(@list.search(99)).must_equal false
         end
 
         it 'will return `nil` for `getFirst` if the list is empty' do
@@ -140,7 +142,10 @@ describe LinkedList do
                 expect(@list.find_min).must_equal 0
                 count += 1
             end
+         
+         
             @list.add_last(100)
+            
             @list.add_first(-12)
             
             # Act-Assert
