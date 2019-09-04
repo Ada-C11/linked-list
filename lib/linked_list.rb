@@ -127,8 +127,8 @@ class LinkedList
     end
 
     # method to print all the values in the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O(1)
     def visit
       current == @head
       until current == nil
@@ -161,10 +161,19 @@ class LinkedList
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity:  O(n)
+    # Space Complexity: O(1)
     def reverse
-      raise NotImplementedError
+      current = @head
+      previous = nil
+      temp = nil
+      until current == nil
+        temp = current.next
+        current.next = previous
+        previous = current
+        current = temp
+      end
+      @head = previous
     end
 
 
@@ -188,7 +197,34 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_nth_from_end(n)
-      raise NotImplementedError
+      
+      counter = 0 
+      current = @head
+      trailing_current = nil
+      if current == nil
+        return nil
+      end
+      if n > length
+        return nil
+      end
+
+      while current != nil
+        if counter == n + 1
+          trailing_current = @head
+        end
+        if trailing_current != nil
+          trailing_current = trailing_current.next
+        end
+        current = current.next
+        counter += 1
+      end
+      if counter == n + 1
+        return @head.data
+      end
+        if trailing_current == nil
+          return nil
+        end
+        return trailing_current.data
     end
 
     # checks if the linked list has a cycle. A cycle exists if any node in the
