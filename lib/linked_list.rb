@@ -128,7 +128,7 @@ class LinkedList
 
   # method to print all the values in the linked list
   # Time Complexity: O(n) where n is the length of the linked list
-  # Space Complexity: O(1)
+  # Space Complexity: O(n) where n is the length of the linked list
   def visit
     current = @head
     if !current
@@ -145,39 +145,20 @@ class LinkedList
   # Time Complexity: O(n) where n is the length of the linke list
   # Space Complexity: O(1)
   def delete(value)
-    return if @head == nil
+    return if !@head
 
+    previous = nil
     current = @head
-    last = nil
 
-    until current == nil
-      if value == current.data
-        if @head.data == value
-          @head = current.next
-        else
-          last.next = last.next.next
-        end
+    until !current
+      if current.data == value
+        @head.data == value ? @head = current.next : previous.next = current.next
       end
+
+      previous = current
+      current = current.next
     end
-
-    last = current
-    current = current.next
   end
-
-  # return if !@head
-
-  # previous = nil
-  # current = @head
-
-  # until !current
-  #   if current.data == value
-  #     @head.data == value ? @head = current.next : previous.next = current.next
-  #   end
-
-  #   previous = current
-  #   current = current.next
-  # end
-  # end
 
   # method to reverse the singly linked list
   # note: the nodes should be moved and not just the values in the nodes
@@ -243,7 +224,7 @@ class LinkedList
   # checks if the linked list has a cycle. A cycle exists if any node in the
   # linked list links to a node already visited.
   # returns true if a cycle is found, false otherwise.
-  # Time Complexity: O(n) where n is the length of the linked list
+  # Time Complexity: O(n^2) where n is the length of the linked list
   # Space Complexity: O(1)
   def has_cycle
     current = @head
