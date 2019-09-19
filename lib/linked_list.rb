@@ -154,17 +154,23 @@ class LinkedList
 
     # method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
-    # Time Complexity:
-    # Space Complexity
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
     def reverse
-      # node = @head
+      # 3 (head) -> 2 (tail) -> nil
+      return nil if !@head
 
-      # until node == nil
+      previous = nil
+      current = @head
 
-      # end
+      until !current
+        next_node = current.next # 2, nil
+        current.next = previous # nil, 3 @head
+        previous = current # 3 @head, 2
+        current = next_node # 2, nil
+      end
 
-
-      raise NotImplementedError
+      @head = previous  #2
     end
 
 
@@ -302,11 +308,3 @@ class LinkedList
       current.next = @head # make the last node link to first node
     end
 end
-
-
-# class intersection
-#   list1 = LinkedList.new().head().add_first(5).add_first.(3). add_first(1)
-#   list2 = LinkedList.new().head().add_first(4).add_first.(2)
-
-#   if list1.
-# end
