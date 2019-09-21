@@ -1,6 +1,5 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
-require 'minitest/skip_dsl'
 
 require_relative 'test_helper'
 
@@ -80,6 +79,7 @@ describe LinkedList do
         it "will put new items to the rear of the list" do
             # Arrange
             @list.add_last(2)
+            
             # Act-Assert
             expect(@list.length).must_equal 1
             expect(@list.get_last).must_equal 2
@@ -166,11 +166,11 @@ describe LinkedList do
             @list.add_first(4)
             @list.add_first(3)
             @list.add_first(2)
-            
+        
             # Act
             # delete fist node (requires updating head)
             @list.delete(2)
-            
+    
             # Assert
             expect(@list.get_first).must_equal 3
             expect(@list.length).must_equal 4
@@ -236,6 +236,100 @@ describe LinkedList do
             expect(@list.find_nth_from_end(1)).must_equal 2
             expect(@list.find_nth_from_end(2)).must_equal 3
             expect(@list.find_nth_from_end(3)).must_equal 4
+        end
+    end
+
+    describe "find_middle_value" do
+        it "will return nil if the list is empty" do
+            expect(@list.find_middle_value).must_be_nil
+        end
+
+        it "can retrieve the middle value from the list" do
+            @list.add_first(5)
+            @list.add_first(4)
+            @list.add_first(3)
+
+            expect(@list.find_middle_value).must_equal 4
+
+            @list.add_first(2)
+
+            expect(@list.find_middle_value).must_equal 4
+        end
+    end
+
+    describe "search" do
+        it "will return false if the list is empty or does not contain specified value" do
+            expect(@list.search(5)).must_equal false
+
+            @list.add_first(3)
+            @list.add_first(5)
+            @list.add_first(10)
+            @list.add_first(8)
+
+            expect(@list.search(7)).must_equal false
+        end
+
+        it "will return true if list contains a specified value" do
+            @list.add_first(3)
+            @list.add_first(5)
+            @list.add_first(10)
+            @list.add_first(8)
+
+            expect(@list.search(3)).must_equal true
+            expect(@list.search(10)).must_equal true
+            expect(@list.search(8)).must_equal true
+        end
+    end
+
+    describe "visit" do
+        it "will return nil if list is empty" do
+            expect(@list.visit).must_be_nil
+        end
+
+        it "will print all the values in the list" do
+            @list.add_last(1)
+            @list.add_last(2)
+            @list.add_last(3)
+            @list.add_last(4)
+
+            expect(@list.visit).must_equal "1 2 3 4 "
+        end
+    end
+
+    describe "insert_ascending" do 
+        it "will insert at beginning of list if list is empty" do
+            @list.insert_ascending(5)
+
+            expect(@list.visit).must_equal "5 "
+            expect(@list.length).must_equal 1    
+        end
+
+        it "will insert a new value into the correct position in a sorted list" do
+            @list.add_first(5)
+            @list.add_first(3)
+            @list.add_first(2)
+            @list.add_first(1)
+
+            @list.insert_ascending(4)
+
+            expect(@list.length).must_equal 5
+            expect(@list.visit).must_equal "1 2 3 4 5 "
+        end
+    end
+
+    describe "has_cycle" do
+        it "returns true or false based on whether the list contains a cycle or not" do
+            expect(@list.has_cycle).must_equal false
+
+            @list.add_first(1)
+            @list.add_first(2)
+            @list.add_first(3)
+            
+            expect(@list.has_cycle).must_equal false
+
+            @list.create_cycle
+
+            expect(@list.has_cycle).must_equal true
         end
     end
 end
