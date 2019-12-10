@@ -3,15 +3,17 @@
 class Node
   attr_reader :data # allow external entities to read value but not write
   attr_accessor :next # allow external entities to read or write next node
+  attr_accessor :prev # allow external entities to read or write prev node
 
-  def initialize(value, next_node = nil)
+  def initialize(value, next_node = nil, prev_node = nil)
     @data = value
     @next = next_node
+    @prev = prev_node
   end
 end
 
 # Defines the singly linked list
-class LinkedList
+class DoublyLinkedList
   def initialize
     @head = nil # keep the head private. Not accessible outside this class
   end
@@ -303,15 +305,8 @@ class LinkedList
       return @head.data
     end
 
-    if @head.data > new_node.data
-      temp_node = @head
-      @head = new_node
-      new_node.next = temp_node
-      return @head.data
-    end
-
     curr_node = @head
-    while curr_node != nil
+    while temp_node != nil
       if curr_node.data <= new_node.data && curr_node.next.data > new_node.data
         temp_node = curr_node.next
         curr_node.next = new_node
@@ -321,8 +316,6 @@ class LinkedList
       curr_node = curr_node.next
     end
   end
-
-  
 
   # Helper method for tests
   # Creates a cycle in the linked list for testing purposes
