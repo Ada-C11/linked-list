@@ -18,18 +18,20 @@ class LinkedList
 
     # method to add a new node with the specific data value in the linked list
     # insert the new node at the beginning of the linked list
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity: o(1) 
+    # Space Complexity: o(1)
+    # o(1) b/c pointers at head + tail
     def add_first(value)
-      raise NotImplementedError
+      node = Node.new data 
+      self.length +=1
     end
 
     # method to find if the linked list contains a node with specified value
     # returns true if found, false otherwise
-    # Time Complexity:  
-    # Space Complexity
+    # Time Complexity: o(n)
+    # Space Complexity: o(n)
     def search(value)
-      raise NotImplementedError
+      return value unless 
     end
 
     # method to return the max value in the linked list
@@ -37,7 +39,7 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_max
-      raise NotImplementedError
+      
     end
 
     # method to return the min value in the linked list
@@ -45,7 +47,7 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def find_min
-      raise NotImplementedError
+      
     end
 
 
@@ -53,7 +55,7 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def length
-      raise NotImplementedError
+      
     end
 
     # method that returns the value at a given index in the linked list
@@ -62,29 +64,43 @@ class LinkedList
     # Time Complexity:  
     # Space Complexity
     def get_at_index(index)
-      raise NotImplementedError
+      current_node = @head
+      while current_node.next?
+        current_node = current_node.next
     end
 
     # method to print all the values in the linked list
     # Time Complexity:  
     # Space Complexity
     def visit
-      raise NotImplementedError
+      
     end
 
-    # method to delete the first node found with specified value
-    # Time Complexity:  
-    # Space Complexity
+    #### method to delete the first node found with specified value
+    # Time Complexity:  o(n)
+    # Space Complexity: o(n)
     def delete(value)
-      raise NotImplementedError
+      if self.value = true
+        remove self
     end
 
-    # method to reverse the singly linked list
+    #### method to reverse the singly linked list
     # note: the nodes should be moved and not just the values in the nodes
     # Time Complexity:  
-    # Space Complexity
+    # Space Complexity:
+    # do with +  w/o recursion ?
     def reverse
-      raise NotImplementedError
+      current_node = @head
+      previous_node = nil
+      next_node = nil
+
+    while current_node
+      next_node = current_node.pointer
+      current_node.set_pointer(previous_node)
+      previous_node = current_node
+      current_node = next_node
+    end
+    @head = previous_node
     end
 
 
